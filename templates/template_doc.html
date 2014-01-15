@@ -1,0 +1,12 @@
+{% extends "./template_main.html" %}
+{% block body %}
+<div class='article'>
+    <!--<br style="clear: both;" /> -->
+    <br/>
+    <div class='article-title'>{{ doc.title }}</div>
+    <div class='article-meta'>By {{ doc.author }}</div>
+    <div class='article-lead'>{{ doc.subtitle }}</div>
+
+    {{ doc.body }}
+
+{% endblock %}

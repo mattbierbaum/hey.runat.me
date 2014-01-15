@@ -1,0 +1,23 @@
+{% extends "./template_main.html" %}
+{% block body %}
+
+{% for cat in header %}
+<div id="content">
+    <h1><a href='{{ cat.href }}' style='text-decoration:none;color:rgb(240,240,240);margin-left: 12px; font-size: 36px'>{{cat.name}}</a></h1>
+    <div class='sg-container' style='position: relative;'>
+    <a href="{{ cat.href }}" style='text-decoration:none; color: white;'><span class="link-spanner"></span></a>
+        {% for item in cat.list %}
+        <div class="sg sg-l-400 bigbox">
+            <a href="{{ item.href }}">
+                <img src="/img/snaps/{{item.snapshot}}"/>
+                <aside>
+                <span>{{ item.name }}</span>
+                </aside>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
