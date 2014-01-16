@@ -61,13 +61,15 @@ body {
 
 .logobox {
     float: left;
-    width: 240px;
+    width: 420px;
     height: 80px;
 }
 
 .header_title {
     width: 90%;
-    height: 60%;
+    height: auto;
+    display: table;
+    right: auto;
     color: rgb(60,60,60);
     font-size: 36px;
     border-color: rgb(150,150,150);
@@ -216,6 +218,7 @@ body {
 
 .bigbox aside span a {
     text-decoration: none;
+    color: white;
 }
 
 .article {

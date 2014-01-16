@@ -19,22 +19,26 @@ def time_create():
 def time_load(st):
     return datetime.strptime(st, DATEFORMAT)
 
-def figure(filename, caption, size, loc='center'):
+#=========================================================
+def tpl_figure(filename, caption, size, loc='center'):
     template = tmpl.get_template('./figure.html')
     out = template.render(src=filename, caption=caption, size=size, loc=loc)
     return out
 
-def code(code, lang='python'):
+def tpl_code(code, lang='python'):
     return """
     <code class='%s'><pre>
 %s
     </pre></code>
     """ % (lang, code)
 
-def eq(tex):
+def tpl_biglink(href, text):
+    return """<a style='font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='%s'>%s</a>""" % (href, text)
+
+def tpl_eq(tex):
     pass
 
-def insert_break():
+def tpl_insert_break():
     return "<br style='clear: both;' />"
 
 tmpl = jinja2.Environment(
@@ -43,16 +47,30 @@ tmpl = jinja2.Environment(
 )
 
 tmpl.globals.update({
-    "figure": figure,
-    "code": code,
-    "eq" : eq,
-    "break": insert_break,
+    "figure": tpl_figure,
+    "code": tpl_code,
+    "eq" : tpl_eq,
+    "break": tpl_insert_break,
+    "biglink": tpl_biglink,
 })
 
-def title_to_url(title):
+
+#=======================================================
+def t2u(title): # title to url
     temp = title.replace("'", '').replace('"', '').replace('.','').replace('*', '')
     return "_".join(temp.lower().split(' '))
 
+def d2u(doc): # doc to url
+    return ROOTFOLDER+'/'+doc['category']+'/'+t2u(doc['quicktitle'])+'.html'
+
+def s2u(snap): # snap to url
+    return ROOTFOLDER+'/'+snap['name']
+
+def c2u(cat): #category to url
+    return ROOTFOLDER+'/'+cat
+
+
+#========================================================
 def load_all_docs(folder=MDFOLDER):
     docs = []
     mark = md.Markdown()
@@ -63,8 +81,8 @@ def load_all_docs(folder=MDFOLDER):
         elif f.endswith(".yaml"):
             print "Loading %s" % f
             doc = yaml.load(open(f))
-            doc['href'] = ROOTFOLDER+'/'+doc['category']+'/'+title_to_url(doc['quicktitle'])+'.html'
-            doc['outfile'] = OUTFOLDER+'/'+doc['category']+'/'+title_to_url(doc['quicktitle'])+'.html'
+            doc['href'] = ROOTFOLDER+'/'+doc['category']+'/'+t2u(doc['quicktitle'])+'.html'
+            doc['outfile'] = OUTFOLDER+'/'+doc['category']+'/'+t2u(doc['quicktitle'])+'.html'
             doc['bodyfile'] = f.replace(".yaml", ".md")
             docs.append(doc)
 
@@ -77,9 +95,9 @@ def process_doc(doc, header):
         doc['body'] = tmpl.from_string(mark.convert(body)).render()
         template = tmpl.get_template("./template_doc.html")
         out = template.render(title=doc['title'], doc=doc, header=header,
-                linklist=[{'href': '/', 'name': '/runat.me/'}])
-         #           {'href': doc['category'], 'name': doc['category']},
-         #           {'href': doc['href'], 'name': title_to_url(doc['quicktitle'])}])
+                linklist=[{'href': '/', 'name': '/runat.me/'},
+                    {'href': ROOTFOLDER+'/'+doc['category'], 'name': doc['category']+'/'},
+                    {'href': doc['href'], 'name': t2u(doc['quicktitle'])}])
  
     with open(doc['outfile'], 'w') as f:
         f.write(out)
@@ -87,8 +105,8 @@ def process_doc(doc, header):
 def process_snap(snap, filename, header):
     template = tmpl.get_template("./template_snap.html")
     out = template.render(title=snap['name'], snaps=snap, header=header,
-            linklist=[{'href': '/', 'name': '/runat.me/'}])
-    #                  {'href': snap['href'], 'name': snap['name']}])
+            linklist=[{'href': '/', 'name': '/runat.me/'},
+                      {'href': snap['href'], 'name': snap['name']}])
 
     with open(filename, 'w') as f:
         f.write(out)
@@ -127,7 +145,7 @@ def process_site():
         tcat[c].append(info)
 
     header = [{'name': cat, 'href': ROOTFOLDER+'/'+cat, 'list': tcat[cat][:3]} for cat in cats]
-    snaps = [{'name': cat, 'href': cat, 'list': tcat[cat]} for cat in cats]
+    snaps = [{'name': cat, 'href': ROOTFOLDER+'/'+cat, 'list': tcat[cat]} for cat in cats]
 
     if os.path.exists(OUTFOLDER):
         shutil.rmtree(OUTFOLDER)

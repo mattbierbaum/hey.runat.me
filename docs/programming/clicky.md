@@ -23,5 +23,5 @@ I'd do that.
 
 Well, what are you waiting for? Go visit Clicky
 
-<a style='text-decoration: none; font-size: 36px; display:block; text-align: center;' href='http://mattbierbaum.com'>Clicky</a>
+{{ biglink('http://mattbierbaum.com', 'Clicky') }}
 
