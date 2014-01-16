@@ -20,33 +20,13 @@ def time_load(st):
     return datetime.strptime(st, DATEFORMAT)
 
 def figure(filename, caption, size, loc='center'):
-    if loc == 'right':
-        return """
-        <div class='figure right'>
-            <img src='%s'>
-            <div class='figure-caption'>
-                %s
-            </div>
-        </div>
-        """ % (filename, caption)
-
-    if loc == 'center': 
-        return """
-        <div class='center-container' style='height: %ipx;'>
-            <div class='center' style='max-width: %ipx;'>
-                <div class='figure'>
-                    <img src='%s'>
-                    <div class='figure-caption'>
-                        %s
-                    </div>
-                </div>
-            </div>
-        </div>
-        """ % (size+20, size, filename, caption)
+    template = tmpl.get_template('./figure.html')
+    out = template.render(src=filename, caption=caption, size=size, loc=loc)
+    return out
 
 def code(code, lang='python'):
     return """
-    <code class=%s><pre>
+    <code class='%s'><pre>
 %s
     </pre></code>
     """ % (lang, code)
