@@ -7,13 +7,21 @@
         <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
         <script src='/js/highlight.js'></script>
         <script>hljs.initHighlightingOnLoad();</script>
+        {% if title|length > 0 %}
         <title>{{title}} | runat.me</title>
+        {% else %}
+        <title>runat.me</title>
+        {% endif %}
     </head>
 
 <body>
     <div id="header">
         <div class="center-container logobox">
-            <span class="topcenter header_title"><a href='/'>/runat.me/</a></span>
+            <span class="topcenter header_title">
+                {% for link in linklist %}
+                    <a href='{{link.href}}'>{{link.name}}</a>
+                {% endfor %}
+            </span>
         </div>
     
         <div class='infoboxes'>

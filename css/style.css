@@ -15,21 +15,28 @@ body {
     opacity: 0.5;
 
     background-color: black;
-    /* edit: fixes overlap error in IE7/8, 
-    *      make sure you have an empty gif */
     background-image: url('empty.gif');
 }   
 
 #header {
-    /*background: rgb(120,120,120);*/
-    background: rgb(225,225,225);
-    background: rgb(201,218,245);
-    background: rgb(215,228,250);
     background: rgb(238,238,238);
     margin: 0px;
     padding: 6px 6px 6px 6px;
     box-shadow: 0 0 4px rgb(80, 80, 80) inset;
     overflow: hidden;
+}
+
+#footer {
+    background: rgb(238,238,238);
+    margin: 0px;
+    padding: 6px 6px 6px 6px;
+    box-shadow: 0 0 4px rgb(80, 80, 80) inset;
+    overflow: hidden;
+
+    bottom: 0px;
+    height: 80px;
+    display: block;
+    width: 99%;
 }
 
 .center-container {
@@ -214,6 +221,7 @@ body {
 .article {
     margin: auto;
     width: 76%;
+    padding-bottom: 50px;
 }
 
 .article-title {

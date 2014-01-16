@@ -74,24 +74,29 @@ def process_doc(doc, header):
     mark = md.Markdown()
     with open(doc['bodyfile']) as f:
         body = f.read()
-        print doc
         doc['body'] = tmpl.from_string(mark.convert(body)).render()
         template = tmpl.get_template("./template_doc.html")
-        out = template.render(title=doc['title'], doc=doc, header=header)
+        out = template.render(title=doc['title'], doc=doc, header=header,
+                linklist=[{'href': '/', 'name': '/runat.me/'}])
+         #           {'href': doc['category'], 'name': doc['category']},
+         #           {'href': doc['href'], 'name': title_to_url(doc['quicktitle'])}])
  
     with open(doc['outfile'], 'w') as f:
         f.write(out)
 
 def process_snap(snap, filename, header):
     template = tmpl.get_template("./template_snap.html")
-    out = template.render(title=snap['name'], snaps=snap, header=header)
+    out = template.render(title=snap['name'], snaps=snap, header=header,
+            linklist=[{'href': '/', 'name': '/runat.me/'}])
+    #                  {'href': snap['href'], 'name': snap['name']}])
 
     with open(filename, 'w') as f:
         f.write(out)
 
 def process_home(header):
     template = tmpl.get_template('./template_home.html')
-    out = template.render(title="", header=header)
+    out = template.render(title="", header=header, 
+            linklist=[{'href': '/', 'name': '/runat.me/'}])
 
     with open('index.html', 'w') as f:
         f.write(out)
