@@ -1,7 +1,19 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                "HTML-CSS": { styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}},
+                    extensions: ["handle-floats.js"]},
+                tex2jax: {inlineMath: [['$','$'],['\\(','\\)']], processEscapes: true}, delayStartupUntil: "onload"
+            });
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+        </script>
+
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
         <link rel='stylesheet' type='text/css' href='/css/normalize.css'/>
         <link rel='stylesheet' type='text/css' href='/css/style.css'/>
         <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
@@ -16,12 +28,13 @@
 
 <body>
     <div id="header">
-        <div class="center-container logobox">
-            <span class="topcenter header_title">
+        <div class="logobox">
+            <!--<img src='/img/cupgame.png' width=80 height=80/>-->
+            <div class="header_title">
                 {% for link in linklist %}
                     <a href='{{link.href}}'>{{link.name}}</a>
                 {% endfor %}
-            </span>
+            </div>
         </div>
     
         <div class='infoboxes'>
