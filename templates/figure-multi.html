@@ -1,0 +1,6 @@
+<figure class='{{loc}}' style='width: {{size * (src|length)}}px; max-width: 100%'>
+    {% for sc in src %}
+    <img src='{{sc}}' class='multipanel' style='width: {{100/(src|length) - 2}}%'>
+    {% endfor %}
+    <figcaption>{{caption}}</figcaption>
+</figure>

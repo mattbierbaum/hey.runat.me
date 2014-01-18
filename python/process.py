@@ -26,6 +26,11 @@ def tpl_figure(filename, caption, size, loc='center'):
     out = template.render(src=filename, caption=caption, size=size, loc=loc)
     return out
 
+def tpl_figure_multi(filename, caption, size, loc='center'):
+    template = tmpl.get_template('./figure-multi.html')
+    out = template.render(src=filename, caption=caption, size=size, loc=loc)
+    return out
+
 def tpl_code(code, lang='python'):
     return """
     <code class='%s'><pre>
@@ -49,6 +54,7 @@ tmpl = jinja2.Environment(
 
 tmpl.globals.update({
     "figure": tpl_figure,
+    "figure_multi": tpl_figure_multi,
     "code": tpl_code,
     "eq" : tpl_eq,
     "break": tpl_insert_break,

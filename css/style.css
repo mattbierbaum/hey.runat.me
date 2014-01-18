@@ -335,7 +335,14 @@ figure img {
     max-width: 100%
 }
 
+figure img.multipanel {
+    display: inline;
+    width: 49%;
+}
+
 figcaption {
+    border-style: solid;
+    border-width: 1 0 0;
     padding-top: 4px;
     text-align: center;
     color: #666;
@@ -410,6 +417,8 @@ opera-only :-o-prefocus,
     .infobox ul { display: none; }
     .header_title { font-size: 18px;}
     .logobox { height: 30px; }
+    figure.center {width: 100%; display: block;}
+    figure img.multipanel { width: 100%; display: block; }
 }
 
 @media only screen and (min-width : 481px) and (max-width: 767px) {
@@ -428,17 +437,20 @@ opera-only :-o-prefocus,
     .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
     .header_title { font-size: 36px;}
     .logobox { height: 100px; }
+    .article { width: 768px; }
 }
 
 @media only screen and (min-width : 1600px) and (max-width: 1800px) {
     .sg-l-400 { width: 25%; *width: 24.969%; }
     .header_title { font-size: 36px;}
     .logobox { height: 100px; }
+    .article { width: 840px; }
 }
 
 @media only screen and (min-width : 1801px) {
     .sg-l-400 { width: 20%; *width: 19.969%; }
     .header_title { font-size: 42px;}
     .logobox { height: 100px; }
+    .article { width: 840px; }
 }
 
