@@ -1,6 +1,10 @@
 We all know that the game of beer pong is relatively simple in terms of
 physics.  What this post presupposes is: maybe it isn't?
 
+Before I even begin, I'd like to say that if you are looking for pretty
+pictures and advice, skip to <a href='#optimal'>Optimal aiming</a>
+or <a href='#fractals'>Beerpong fractals</a>.  Otherwise, enjoy.
+
 {{ figure('/img/beerpong/fractalpreview.png', "A fractal generated with \
 beer pong dynamics.  Not so simple.", 362, 'right') }}
 
@@ -10,10 +14,10 @@ between two paddles on an Atari while two gentlemen sip beverages.  Well, fine,
 it's dudes throwing balls into cups full of beer until their girlfriends leave
 for another party.
 
-Now, what are typical questions that one may ask when thinking, "hmmm, I'm bored
-and want to know about the physics of beer pong"?  If you are asking yourself that 
-question, there are likely other things in your life you should question. None the
-less, you may arrive at these:
+Now, what are typical questions that one may ask when thinking, "hmmm, I'm
+bored and want to know about the physics of beer pong"?  If you are asking
+yourself that question, there are likely other things in your life you should
+question. Nonetheless, you may arrive at these:
 
 1. What is the precise trajectory I need to make it in a cup?
 2. How accurate do I need to be to get the ball in the cup?  Something about angular errors?
@@ -40,8 +44,8 @@ $$ z(t) = z_0 + v_{0,z}t $$
 
 where y is up, gravity is down and **there is no air resistance**.  I feel like
 I have to bring up this point unncessarily early.  I do physics, not real
-things.  Air resistance would make this real. Real hard.  So it's gone, like my
-respect for Halle Berry after Catwoman. So, when you throw a ball, you can
+things.  Air resistance would make this real. Real hard.  So it's gone, like 
+my hopes of growing up to be an astronaut. So, when you throw a ball, you can
 determine at any time where it is, where it's going and which dreams it's left
 behind along the way.  This is going to be useful to us later, so don't forget
 it.
@@ -69,7 +73,7 @@ This is because we ignored air resistance; if we didn't, it would be some other
 minimization algorithm which wouldn't be too terrible, but probably not fun
 either.  In terms of polynomials, a torus can be written
 
-$$ ((x_n)^2 + (y_n)^2 + (z_n)^2 + R^2 - r^2)^2 = 4R^2(x_n^2 + y_n^2) $$
+$$ (x_n^2 + y_n^2 + z_n^2 + R^2 - r^2)^2 = 4R^2(x_n^2 + y_n^2) $$
 
 where $x_n$, $y_n$, $z_n$ are normalized coordinates, $x_n = x(t) - x_c$ where
 $x_c$ is the center of the rim.  And all the rest are normalized too.  We
@@ -160,6 +164,8 @@ symmetry and we can start to see where some of the bounces map.  On the back
 row, the darker colors represent nearest neighbor bounces while the lighter
 color is a double bounce from second nearest neighbor to another another cup.
 
+<span id='optimal'></span>
+
 Optimal aiming
 --------------
 
@@ -202,6 +208,7 @@ eyes.  Looking at various errors levels in fractions of the cup size, we see
     the backboard effect of the last cups means you should aim more towards the back\
     center cup.  Finally, at expert levels, do as you feel.", 200, 'center') }}
 
+<span id='fractals'></span>
 
 Beerpong fractals
 -----------------
