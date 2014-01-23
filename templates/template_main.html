@@ -11,6 +11,20 @@
         <script type="text/javascript"
           src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
         </script>
+        <script>
+        function popup(elm){
+            document.getElementById("blanket").onclick = popdown;
+            document.getElementById("popup_img").onclick = popdown;
+            document.getElementById("popup_img").src = elm.children[0].src;
+            document.getElementById("blanket").style.display = 'block';
+            document.getElementById("popup").style.width = document.getElementById("popup_img").width;
+            document.getElementById("popup").style.height = document.getElementById("popup_img").height;
+        }
+
+        function popdown(){
+            document.getElementById("blanket").style.display = 'none';
+        }
+        </script>
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
@@ -25,8 +39,12 @@
         <title>runat.me</title>
         {% endif %}
     </head>
-
 <body>
+    <div id="blanket">
+        <div id="popup">
+            <img id="popup_img" src="/favicon.ico">
+        </div>
+    </div>
     <div id="header">
         <div class="logobox">
             <!--<img src='/img/cupgame.png' width=80 height=80/>-->

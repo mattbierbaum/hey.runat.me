@@ -361,6 +361,40 @@ figcaption {
     font-size: 12px;
 }
 
+#blanket {
+    cursor: pointer;
+    background: rgba(0,0,0,0.85);
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: none;
+    text-decoration: none;
+    color: black;
+}
+
+#popup {
+    z-index: 1000;
+    position: fixed;
+    height: auto;
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+#popup_link {
+    display:block;
+}
+
+#popup_img {
+    display: block;
+    cursor: pointer;
+}
+
 .panel {
     padding: 15px;
     background: #fafafa;

@@ -121,7 +121,7 @@ drop ten thousand ping pong balls from straight above a single cup rim and look
 at the surface of interaction where they touch.  It looks like this:
 
 {{ figure_multi(['/img/beerpong/rim_surface.png', '/img/beerpong/rim_surface_lots.png'],
-      "(A) Looks like a torus - things are going well so far.  (B) An infinite\ 
+      "(A) Looks like a torus - things are going well so far.  (B) An infinite \
       array of cups.", 350, 'center') }}
 
 The second picture is for an infinite array of cups, which we will be looking
@@ -328,9 +328,12 @@ rounding errors.
     of 10000, for $10^8$ total.  The boundary appears the same as before, but\
     the curvature is gone due to the scale.  Fractal? I say yes.", 250, 'center', True) }}
 
-
 Sources and more
 ----------------
+
+So, remember to shoot towards the center back if you're uncertain and that
+beerpong is pretty complicated once you don't swish / hole in one / touchdown /
+I'm bad at sports sayings.
 
 You can find the source code on my <a
 href='https://github.com/mattbierbaum/cupgame'>github</a>.  I also made giant
@@ -344,4 +347,5 @@ I'm not joking, I'll print one and mail it to you.  You're welcome.
     "Some simulation results available for printing.  Or really anything\
     by request", 250, 'center') }}
 
-Also, I lied about the singularities.  
+Also, I lied about the singularities (its more like non-analyticities but
+that's not here or there). 
