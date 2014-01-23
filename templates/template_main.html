@@ -15,10 +15,12 @@
         function popup(elm){
             document.getElementById("blanket").onclick = popdown;
             document.getElementById("popup_img").onclick = popdown;
+            document.getElementById("popup_img").onload = function(){
+                document.getElementById("blanket").style.display = 'block';
+                document.getElementById("popup").style.width = document.getElementById("popup_img").width;
+                document.getElementById("popup").style.height = document.getElementById("popup_img").height;
+            }
             document.getElementById("popup_img").src = elm.children[0].src;
-            document.getElementById("blanket").style.display = 'block';
-            document.getElementById("popup").style.width = document.getElementById("popup_img").width;
-            document.getElementById("popup").style.height = document.getElementById("popup_img").height;
         }
 
         function popdown(){
