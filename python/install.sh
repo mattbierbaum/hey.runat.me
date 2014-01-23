@@ -8,6 +8,7 @@ then
     git checkout gh-pages
     git merge master
     make
+    git add .
     git commit -m "updating gh-pages from master"
     git push origin gh-pages
     make clean
