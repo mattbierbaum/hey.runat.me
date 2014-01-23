@@ -335,9 +335,21 @@ figure img {
     max-width: 100%
 }
 
+figure img.figsize-98 { width: 98%; }
+figure img.figsize-48 { width: 48%; }
+figure img.figsize-31 { width: 31%; }
+figure img.figsize-23 { width: 23%; }
+figure img.figsize-18 { width: 18%; }
+
 figure img.multipanel {
     display: inline;
-    width: 49%;
+    /*width: 49%;*/
+}
+
+figure img.bordered {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444;
 }
 
 figcaption {
@@ -419,6 +431,11 @@ opera-only :-o-prefocus,
     .logobox { height: 30px; }
     figure.center {width: 100%; display: block;}
     figure img.multipanel { width: 100%; display: block; }
+    figure img.figsize-98 { width: 100%; }
+    figure img.figsize-48 { width: 100%; }
+    figure img.figsize-31 { width: 100%; }
+    figure img.figsize-23 { width: 100%; }
+    figure img.figsize-18 { width: 100%; }
 }
 
 @media only screen and (min-width : 481px) and (max-width: 767px) {

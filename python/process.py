@@ -14,6 +14,8 @@ MDFOLDER = "./docs"
 ROOTFOLDER = OUTFOLDER[1:]
 DATEFORMAT = "%Y-%m-%d %H:%M:%S"
 
+CATEGORY_PRIORITY = {"movies": 4, "about": 5}
+
 def time_create():
     return datetime.strftime(DATEFORMAT)
 
@@ -26,9 +28,11 @@ def tpl_figure(filename, caption, size, loc='center'):
     out = template.render(src=filename, caption=caption, size=size, loc=loc)
     return out
 
-def tpl_figure_multi(filename, caption, size, loc='center'):
+def tpl_figure_multi(filename, caption, size, loc='center', border=False):
+    extrastyle = "bordered" if border else ""
     template = tmpl.get_template('./figure-multi.html')
-    out = template.render(src=filename, caption=caption, size=size, loc=loc)
+    out = template.render(src=filename, caption=caption, size=size, loc=loc,
+            extrastyle=extrastyle)
     return out
 
 def tpl_code(code, lang='python'):
@@ -47,6 +51,10 @@ def tpl_eq(tex):
 def tpl_insert_break():
     return "<br style='clear: both;' />"
 
+def tpl_sizes(arr):
+    tp = {1: '98', 2: '48', 3: '31', 4: '23', 5: '18'}
+    return 'figsize-'+tp[len(arr)]
+
 tmpl = jinja2.Environment(
     loader=jinja2.FileSystemLoader('./templates'),
     undefined=jinja2.StrictUndefined,
@@ -59,6 +67,7 @@ tmpl.globals.update({
     "eq" : tpl_eq,
     "break": tpl_insert_break,
     "biglink": tpl_biglink,
+    'imsize': tpl_sizes,
 })
 
 
@@ -128,7 +137,7 @@ def process_home(header):
 def process_site():
     docs = load_all_docs()
     cats = list(set([d['category'] for d in docs]))
-    cats.sort()
+    cats.sort(key=lambda tup: (CATEGORY_PRIORITY.get(tup, 0), tup))
     
     docs.sort(key=lambda tup: (tup['priority'], tup['date'])) 
     docs.reverse()

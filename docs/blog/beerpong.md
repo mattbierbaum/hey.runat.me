@@ -15,7 +15,13 @@ it's dudes throwing balls into cups full of beer until their girlfriends leave
 for another party.
 
 Now, what are typical questions that one may ask when thinking, "hmmm, I'm
-bored and want to know about the physics of beer pong"?  If you are asking
+bored and want to know about the physics of beer pong"?  They may include:
+
+1. What is the precise trajectory I need to make it in a cup?
+2. Where should I aim, given my ability level?
+3. If I shot randomly at the cups what is the chance that I make it in? 
+
+<!--If you are asking
 yourself that question, there are likely other things in your life you should
 question. Nonetheless, you may arrive at these:
 
@@ -29,10 +35,15 @@ I have answers for these:
    Practice is better for this calculation.
 2. Perform step 1, rinse and repeat.
 3. A bit more subtle, but a good idea of its resolution comes from step 2, rinse, and repeat.
+-->
 
-Let's ask a completely different question - what happens when we don't quite
-make it?  What happens when the ball bounces off the rim?  Now there's
-something to make your socks go up and down.
+I will sort of touch on these issues, but only through a completely different
+question - what happens when we don't quite make it?  What happens when the
+ball bounces off the rim?  Now there's something to make your socks go up and
+down.
+
+Creating trajectories
+---------------------
 
 Okay, so everyone who has encountered physics knows that we can describe a ball
 flying through air with a quadratic equation (except maybe Michael 'Air'
@@ -104,37 +115,37 @@ For a quick recap (for science and reproducability and all that...):
  6. Start again, and continue until the next collision time never occurs
     or it occurs after the ball crosses the zero plane.
 
-Finally, we can start to look at some pictures a.k.a. did I just spew nonsense or 
-is there a reason that this post goes on for 3 more pages. Let's drop ten
-thousand ping pong balls from straight above a single cup rim and look at the
-surface of interaction where they touch.  It looks like this:
+Finally, we can start to look at some pictures a.k.a. was that a bunch of
+nonsense or is there a reason that this post goes on for 3 more pages. Let's
+drop ten thousand ping pong balls from straight above a single cup rim and look
+at the surface of interaction where they touch.  It looks like this:
 
 {{ figure_multi(['/img/beerpong/rim_surface.png', '/img/beerpong/rim_surface_lots.png'],
-      '(A) Looks like a torus - I told you so.  (B) An infinite array of cups.', 
-      350, 'center') }}
+      "(A) Looks like a torus - things are going well so far.  (B) An infinite\ 
+      array of cups.", 350, 'center') }}
 
-The second picture is for an infinite array of cups, which we will be using
-throughout Sections II-MVI.  I think this proves that I'm right so far.  Okay,
-okay.  It's actually a little more subtle  - there are a lot of parameters that
-we need to start thinking about.  Next we'll describe them and look at various
-configurations of these torii.
+The second picture is for an infinite array of cups, which we will be looking
+at in the fractals and scattering sections.  Looks like we're doing okay so
+far.  Okay, okay.  It's actually a little more subtle  - there are a lot of
+parameters that we need to start thinking about.  Next we'll describe them and
+look at various configurations of these torii.
 
 Physical setup
 --------------
 
-Alright, I'm going to now put on my 'physics in the real world hat' and put
-some numbers behind all these letters.  Our variables are: $R$ is the radius of
-the cup, $r$ is the radius of the ball-rim, $h$ the height of the drop, $\eta$
-fractional restitution coefficient ($v_{n+1} / v_n$ between bounces), and... I
-think that's it. Except $x_0$ and $v_0$. And $\epsilon$, the cutoff resolution
-of root finding.  Oh, and $g$, the gravitational constant. Whatever.
+Now I'm going to put on my 'physics in the real world hat' and put some numbers
+behind all these letters.  Our variables are: $R$ is the radius of the cup, $r$
+is the radius of the ball-rim, $h$ the height of the drop, $\eta$ fractional
+restitution coefficient ($v_{n+1} / v_n$ between bounces), and... I think
+that's it. Except $x_0$ and $v_0$. And $\epsilon$, the cutoff resolution of
+root finding.  Oh, and $g$, the gravitational constant. I was close.
 
 To simplify our numbers, I will be presenting non-dimensional forms of these
 variables, normalized by the inter-cup spacing $D$, from center to center. On a
 serious note this is a very important technique in physics and can give you
 great insight into the importance of different physical processes in a
 situation.  However, the choice of this normalization may not have been the
-best as it is mainly for historical reasons, for which you can blame the
+best as it is used mainly for historical reasons, for which you can blame the
 author.  Using a standard solo cup, we find that
 
 $$ R/D \approx 0.95, \,\,\, r/D \approx 0.30, \,\,\, \eta \approx 0.3, 
@@ -186,7 +197,10 @@ row being a backboard ('KOBE!').
 
 But of course, people can't aim perfectly (except Michael 'Laser Fingers'
 Jordan who doesn't know the meaning of uncertainty) so let's start to blur our
-eyes.  Looking at various errors levels in fractions of the cup size, we see
+eyes.  We blur the pattern of shots that land in a cup by various levels of
+gaussian kernels.  The size of the variance approximately models various levels
+of aiming ability.  Looking at these various errors levels in fractions of the
+cup size, we see
 
  - 10% - you're pretty talented.  Have too much free time?  In either case,
    just aim for the center of the cup, you can do it, I believe in you.
@@ -234,27 +248,89 @@ features occur until the very smallest scales - a fractal.
 {{ figure('/img/beerpong/cupgame_fullcup.png', "A more unrealistic beer pong\
  simulation.  That's what I'm talking about.", 350, 'center') }}
 
-Below is a little app that allows you to zoom through the many levels of the
-beerpong fractal.  After you click load and allow the images to buffer,
-use the slider to zoom from cup scale to atomic scale and in between.
+Below is a little javascript program that allows you to zoom through the many
+levels of the beerpong fractal.  After you click load and allow the images to
+buffer, use the slider to zoom from cup scale to atomic scale and in between.
 
 <iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" height=572 width=515 seamless src='/pages_ext/cupgame_zoom.html' style='display: table; margin:auto'></iframe>
 
 If we vary the height of the starting position, we can look at the folding and
-evolution of these self similar structures.  Another slider app for this is
+evolution of these self similar structures.  Another slider program for this is
 below:
 
 <iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" height=572 width=515 seamless src='/pages_ext/cupgame_energy.html' style='display: table; margin:auto'></iframe>
 
 It is also (arguably) interesting to look at different slices of these same
 pictures.  Let's plot a single $45^{\circ}$ line from the center of a cup to
-the energy.  In the vertical direction, we can vary the value of the
-restoration factor, $\eta$.  
+the outer edge along the horizontal axis.  In the vertical direction, we can
+vary the value of the restoration factor, $\eta$.  I changed the colormap,
+but we can still see the elbows that occur and how they appear and spread
+apart as the restoration coefficient increases. 
 
 {{ figure('/img/beerpong/cupgame_vs_restore.png', "Bounce density\
     varied by restoration value, increasing as you move down in the\
     figure.  The same fold features appear in this slice as well.", 
     512, 'center') }}
+
+Chaotic Scattering
+------------------
+
+It turns out that the dynamics of beerpong are actually quite closely related
+to a field in nonlinear dynamics and chaos called <a
+href='http://en.wikipedia.org/wiki/Chaotic_scattering'>chaotic scattering</a>.
+In these systems, it is common to label trajectories by where they 'exit' the
+system.  In beerpong, this means labeling the old pictures by the cup that the
+ball eventually ends up in.  Doing so, we again arrive at (less pretty)
+fractals, where we can see the ball going into the same cup on many different
+scales.  In fact by setting the restitution factor to 1, unlike the previous
+section, we actually see these structures until the point where we run into
+numerical issues due to floating point limitations.  To give you a sense of
+this scale, if the first scale were the size of the entire earth, the last is
+the size of a single atom.  We could go into 'long double' calculations for a
+few more bits or use multi-precision, but I don't think there's much to gain.
+
+{{ figure_multi(['/img/beerpong/wada/wadathin_1.png', 
+                 '/img/beerpong/wada/wadathin_2.png',
+                 '/img/beerpong/wada/wadathin_3.png',
+                 '/img/beerpong/wada/wadathin_4.png'],
+    "Similar parameters as the zoom picture, but coloring the picture by\
+    the cup that it ends in rather than the number of bounces.  We can see\
+    the same 'elbow' structures, as well as empty spaces where the ball bounces\
+    between cups.  Also, the same colors appear at every scale in the simulation\
+    showing the sensitivity to initial conditions. Zooms of (A) $10^0$ (B) $10^4$\
+    (C) $10^8$ (D) $10^{12}$.  In the highest zoom level, you can also see the\
+    numerical difficulty resulting in static.  Oops", 200, 'center', True) }}
+
+What's really cool is there is actually a chaotic scattering fractal that you
+can make and observe in your own home.  To do so, stack 4 reflective balls
+(such as Christmas ornaments) into a pyramid shape, and shine different colored
+lights through two of the openings and look in one of the other two.  Inside, you
+will see a real-space fractal!
+
+In fact, these are not just any type of fractal, they are 'Wada' fractals in 
+which the boundary between these attractors are fractal.  In the case of the
+shiny balls, each of the colors actually always touches each of the other
+colors?  I'm not sure that made sense.  You can read about it more on the
+<a href='http://en.wikipedia.org/wiki/Lakes_of_Wada'>wiki</a>.
+
+It appears that beerpong also shares these properties.  If we make sure that
+there is not way for the pong ball to escape without going into a cup, we can
+start to see these complicated fractal boundaries.  Again, these boundaries
+continue to show more sub-boundaries until our simulation breaks due to
+rounding errors.
+
+{{ figure_multi(['/img/beerpong/wada/wada_big.png', 
+                 '/img/beerpong/wada/wada_med.png',
+                 '/img/beerpong/wada/wada_small.png'],
+    "Fractal boundaries between attractor basins.  (A) the full width\
+    of the rim showing the large scale structure. (B) Zoomed in by a factor\
+    of 10000, still showing the curvature of the boundary. (C) Another factor\
+    of 10000, for $10^8$ total.  The boundary appears the same as before, but\
+    the curvature is gone due to the scale.  Fractal? I say yes.", 250, 'center', True) }}
+
+
+Sources and more
+----------------
 
 You can find the source code on my <a
 href='https://github.com/mattbierbaum/cupgame'>github</a>.  I also made giant
