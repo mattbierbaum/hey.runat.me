@@ -6,7 +6,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     make clean
     git checkout gh-pages
-    git merge master
+    git rebase master
     make
     git add .
     git commit -m "updating gh-pages from master"
