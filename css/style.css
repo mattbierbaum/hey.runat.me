@@ -27,6 +27,11 @@ body {
     position: relative;
 }
 
+.reverser {
+    unicode-bidi:bidi-override;
+    direction: rtl;
+}
+
 #footer {
     background: rgb(238,238,238);
     margin: 0px;
@@ -484,9 +489,16 @@ opera-only :-o-prefocus,
     .logobox { height: 100px; }
 }
 
-@media only screen and (min-width : 1024px) and (max-width: 1599px) {
+@media only screen and (min-width : 1024px) and (max-width: 1240px) {
     .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
-    .header_title { font-size: 36px;}
+    .header_title { font-size: 28px;}
+    .logobox { height: 100px; }
+    .article { width: 768px; }
+}
+
+@media only screen and (min-width : 1240px) and (max-width: 1599px) {
+    .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
+    .header_title { font-size: 32px;}
     .logobox { height: 100px; }
     .article { width: 768px; }
 }
