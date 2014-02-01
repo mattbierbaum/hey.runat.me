@@ -272,6 +272,35 @@ apart as the restoration coefficient increases.
     figure.  The same fold features appear in this slice as well.", 
     512, 'center') }}
 
+These fractal structures that are shown in the above are really another way of
+representing an attribute of chaos: sensitivity in initial conditions.  That is
+to say, even the smallest perturbation in a particle's initial trajectory will
+cause it to quickly diverge away from very similar trajectories.  In the
+beerpong system, we can investigate this property by looking at top down views
+of pong ball paths.  Every kink in the trajectory is a collision with a cup
+causing it to change directions.  We can see that even after just a few
+collisions, very similar trajectories have moved to entirely different cups.
+
+{{ figure_multi(['/img/beerpong/cups_IC_v0.png',
+                 '/img/beerpong/cups_IC_v2.png',
+                 '/img/beerpong/cups_IC_v4.png',],
+    "Trajectories showing sensitivity on initial conditions.  Three different \
+    examples of very quickly diverging trajectories.", 250, 'center', True) }}
+
+If we sample enough of these paths, you might start to believe that any
+starting point could potentially reach any other point if you varied the
+position just right.  If you manage to choose your point of interest in one of
+the boundary regions, it turns out you can do just that.  More about that just
+below.
+
+{{ figure_multi(['/img/beerpong/cups_chaos_far.png',
+                 '/img/beerpong/cups_chaos_near.png'],
+    "Density of trajectories that start within $10^{-4}$ of each other on the \
+    blue dot.  The first collision barely changes their paths which is then \
+    amplified on the next bounce leading eventually to exponentially diverging \
+    trajectories.  On the left, every cup that a path touches is drawn.",
+    350, 'center', True) }}
+
 Chaotic Scattering
 ------------------
 
