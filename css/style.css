@@ -50,11 +50,11 @@ body {
     position: relative;
     display: table;
     clear: both;
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .logobox img {
-/*    float: left;*/
+    /*float: left;*/
     max-height: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -120,9 +120,10 @@ body {
 }
 
 #content {
-    margin: 15px;
+    margin: auto;
     color: rgb(30,30,30);
     background: rgb(40,40,40);
+    max-width: 1500px;
 }
 
 #content h1 {
@@ -479,41 +480,52 @@ opera-only :-o-prefocus,
 
 @media only screen and (min-width : 481px) and (max-width: 767px) {
     .sg-l-400 { width: 50%; *width: 49.969%; }
-    .header_title { font-size: 24px;}
-    .logobox { height: 70px; }
+    .header_title { font-size: 26px;}
+    .logobox { float: none; margin: 0; }
+    .infoboxes { float: none; }
 }
 
 @media only screen and (min-width : 768px) and (max-width: 1023px) {
     .sg-l-400 { width: 50%; *width: 49.969%; }
-    .header_title { font-size: 24px;}
-    .logobox { height: 100px; }
-}
 
-@media only screen and (min-width : 1024px) and (max-width: 1240px) {
-    .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
     .header_title { font-size: 28px;}
-    .logobox { height: 100px; }
-    .article { width: 768px; }
+    .logobox { float: none; margin: 0 0 0 15px; }
+    .infoboxes { float: none; margin: 0 0 0 15px;}
 }
 
-@media only screen and (min-width : 1240px) and (max-width: 1599px) {
+@media only screen and (min-width : 1024px) and (max-width: 1140px) {
     .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
+    .article { width: 768px; }
+
+    .header_title { font-size: 28px;}
+    .logobox { float: none; margin: 0 0 0 15px; }
+    .infoboxes { float: none; margin: 0 0 0 15px;}
+}
+
+@media only screen and (min-width : 1140px) and (max-width: 1599px) {
+    .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
+    .article { width: 768px; }
+
     .header_title { font-size: 32px;}
     .logobox { height: 100px; }
-    .article { width: 768px; }
+    .bigbox { height: 250px; }
 }
 
 @media only screen and (min-width : 1600px) and (max-width: 1800px) {
-    .sg-l-400 { width: 25%; *width: 24.969%; }
+    /*.sg-l-400 { width: 25%; *width: 24.969%; }*/
+    .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
     .header_title { font-size: 36px;}
     .logobox { height: 100px; }
     .article { width: 840px; }
+    .bigbox { height: 270px; }
 }
 
 @media only screen and (min-width : 1801px) {
-    .sg-l-400 { width: 20%; *width: 19.969%; }
+    /*.sg-l-400 { width: 20%; *width: 19.969%; }*/
+    .sg-l-400 { width: 33.333333%; *width: 33.3023%; }
     .header_title { font-size: 42px;}
     .logobox { height: 100px; }
     .article { width: 840px; }
+    .bigbox { height: 300px; }
 }
 

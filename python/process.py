@@ -43,7 +43,7 @@ def tpl_code(code, lang='python'):
     """ % (lang, code)
 
 def tpl_biglink(href, text):
-    return """<a style='font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='%s'>%s</a>""" % (href, text)
+    return """<a style='line-height: 30px; font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='%s'>%s</a>""" % (href, text)
 
 def tpl_eq(tex):
     pass
