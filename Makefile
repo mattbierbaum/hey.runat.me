@@ -1,4 +1,4 @@
-.PHONY: all clean install serve
+.PHONY: all clean install serve twisted
 
 all:
 	python ./python/process.py
@@ -11,3 +11,6 @@ install:
 
 serve:
 	python -m SimpleHTTPServer 8080
+
+twisted:
+	twistd -no web --path=./

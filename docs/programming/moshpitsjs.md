@@ -1,5 +1,5 @@
 As part of the
-[moshpits](http://hey.runat.me/pages/science/moshpits_project.html) project, I
+{{ref('docs/science/moshpits.yaml')}} project, I
 created an interactive simulation in javascript.  Initially just to learn about
 the basics of HTML5 canvas, it become very useful for exploring parameter space
 and also become very popular on 'teh internetz' when interest in the project
