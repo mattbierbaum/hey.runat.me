@@ -1,0 +1,3 @@
+# the exact form of these URLs should be followed:
+# old file name (filesystem) : new redirect (web URL)
+pages/blog/beer_pong.html: /pages/science/beer_pong.html

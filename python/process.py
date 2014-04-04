@@ -143,6 +143,18 @@ def process_home(header):
     with open('index.html', 'w') as f:
         f.write(out)
 
+def process_redirects():
+    doc = yaml.load(open("./python/redirects.yaml"))
+    template = tmpl.get_template("./template_redirect.html")
+    for old, new in doc.iteritems():
+        old = os.path.abspath(old)
+        dirs = os.path.dirname(old)
+        if not os.path.exists(old):
+            if not os.path.exists(dirs):
+                os.makedirs(dirs)
+            with open(old, "w") as f:
+                f.write(template.render(url=new))
+
 def process_site():
     docs = load_all_docs()
     cats = list(set([d['category'] for d in docs]))
@@ -184,7 +196,7 @@ def process_site():
         process_doc(doc, header)
 
     process_home(header)
-
+    process_redirects()
 
 if __name__ == "__main__":
     process_site()
