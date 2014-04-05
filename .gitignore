@@ -1,3 +1,4 @@
 twistd.pid
 index.html
 pages/
+*.pyc

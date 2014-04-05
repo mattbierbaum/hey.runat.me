@@ -15,6 +15,9 @@
         <script>
         function popup(elm){
             document.getElementById("blanket").onclick = popdown;
+            // work-around for webkit issues with callbacks on change src
+            // see: https://code.google.com/p/chromium/issues/detail?id=7731
+            document.getElementById("popup_img").src = "";
             document.getElementById("popup_img").onclick = popdown;
             document.getElementById("popup_img").onload = function(){
                 document.getElementById("blanket").style.display = 'block';
