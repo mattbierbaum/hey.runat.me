@@ -27,3 +27,8 @@ work to make the shadows and lighting really made it come together.
 Check it out here:
 
 {{ biglink('http://mattbierbaum.github.io/onelook/', 'Play Onelook') }}
+
+{{ figure_multi(["/img/onelook/onelook-snap0.png",
+                 "/img/onelook/onelook-snap1.png",
+                 "/img/onelook/onelook-snap2.png"],
+    "Sample screenshots from the game when under development.", 280) }}
