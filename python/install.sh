@@ -9,6 +9,7 @@ then
     git push origin --delete gh-pages
     git checkout -b gh-pages
     sed -i -e '/index.html/d' .gitignore
+    sed -i -e '/404.html/d' .gitignore
     sed -i -e '/pages/d' .gitignore
     make
     git add .

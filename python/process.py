@@ -143,6 +143,14 @@ def process_home(header):
     with open('index.html', 'w') as f:
         f.write(out)
 
+def process_404(header):
+    template = tmpl.get_template('./template_404.html')
+    out = template.render(title="", header=header, 
+            linklist=[{'href': '/', 'name': '/runat.me/'}])
+
+    with open('404.html', 'w') as f:
+        f.write(out)
+
 def process_redirects():
     doc = yaml.load(open("./python/redirects.yaml"))
     template = tmpl.get_template("./template_redirect.html")
@@ -196,6 +204,7 @@ def process_site():
         process_doc(doc, header)
 
     process_home(header)
+    process_404(header)
     process_redirects()
 
 if __name__ == "__main__":
