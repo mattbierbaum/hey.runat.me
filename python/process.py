@@ -14,7 +14,7 @@ MDFOLDER = "./docs"
 ROOTFOLDER = OUTFOLDER[1:]
 DATEFORMAT = "%Y-%m-%d %H:%M:%S"
 
-CATEGORY_PRIORITY = {"science": -1, "movies": 4, "about": 5}
+CATEGORY_PRIORITY = {"science": -1, "media": 4, "about": 5}
 
 def time_create():
     return datetime.strftime(DATEFORMAT)

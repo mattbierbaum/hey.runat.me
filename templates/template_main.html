@@ -20,9 +20,14 @@
             document.getElementById("popup_img").src = "";
             document.getElementById("popup_img").onclick = popdown;
             document.getElementById("popup_img").onload = function(){
+                var img = document.getElementById("popup_img");
+                var pop = document.getElementById("popup");
+
                 document.getElementById("blanket").style.display = 'block';
-                document.getElementById("popup").style.width = document.getElementById("popup_img").width;
-                document.getElementById("popup").style.height = document.getElementById("popup_img").height;
+                pop.style.width = img.width;
+                pop.style.height = img.height;
+                pop.style.maxWidth = '100%';
+                img.style.maxWidth = '100%';
             }
             document.getElementById("popup_img").src = elm.children[0].src;
         }
@@ -40,9 +45,9 @@
         <script src='/js/highlight.js'></script>
         <script>hljs.initHighlightingOnLoad();</script>
         {% if title|length > 0 %}
-        <title>{{title}} | runat.me</title>
+        <title>{{title}} | hey.runat.me</title>
         {% else %}
-        <title>runat.me</title>
+        <title>hey.runat.me</title>
         {% endif %}
     </head>
 <body>

@@ -154,6 +154,7 @@ body {
     position: relative;
     height: 250px;
     /*min-width: 350px;*/
+    text-decoration: none;
 }
 
 .bigbox img {
@@ -199,24 +200,20 @@ body {
     bottom: 0px;
     right: 0px;
     padding: 1em 0.5em;
-    color: white;
     width: 100%;
     font-size: 16px;
     text-align: right;
-    box-shadow: 0 0 20px rgb(0, 0, 0) inset;
+    box-shadow: 0 0 5px rgb(0, 0, 0) inset;
 
-    background: -moz-linear-gradient(top,  rgba(53,53,53,1) 0%, rgba(21,21,21,0.7) 82%, rgba(14,14,14,1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(53,53,53,1)), color-stop(82%,rgba(21,21,21,0.7)), color-stop(100%,rgba(14,14,14,1)));
-    background: -webkit-linear-gradient(top,  rgba(53,53,53,1) 0%,rgba(21,21,21,0.7) 82%,rgba(14,14,14,1) 100%);
-    background: -o-linear-gradient(top,  rgba(53,53,53,1) 0%,rgba(21,21,21,0.7) 82%,rgba(14,14,14,1) 100%);
-    background: -ms-linear-gradient(top,  rgba(53,53,53,1) 0%,rgba(21,21,21,0.7) 82%,rgba(14,14,14,1) 100%);
-    background: linear-gradient(to bottom,  rgba(53,53,53,1) 0%,rgba(21,21,21,0.7) 82%,rgba(14,14,14,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#0e0e0e',GradientType=0 );
+    color: rgba(255,255,255,0.9);
+    font-weight: bold;
+    font-family: 'Open Sans', "Droid Sans", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    background: rgba(33,33,33,0.82);
 }
 
-.bigbox aside span a {
+.bigbox a {
     text-decoration: none;
-    color: white;
 }
 
 .article {
@@ -293,10 +290,10 @@ figure {
     max-width: 100%;
     margin: 0;
     padding: 4px;
-    border: 1px solid #e5e5e5;
+    /*border: 1px solid #e5e5e5;
     background: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);*/
     max-width: 100%;
 }
 
@@ -359,8 +356,8 @@ figure img.bordered {
 }
 
 figcaption {
-    border-style: solid;
-    border-width: 1 0 0;
+    /*border-style: solid;
+    border-width: 1 0 0;*/
     padding-top: 4px;
     text-align: center;
     color: #666;
