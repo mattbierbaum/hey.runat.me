@@ -65,9 +65,9 @@
             </div>
         </div>
     
-        <div class='navbox' >
+        <div class='nav' >
         {% for cat in header %}
-            <ul class='nav'>
+            <ul class='navul'>
                 <li><a href='{{ cat.href }}'>{{ cat.name }}</a>
                     <ul>
                     {% for item in cat.list %}
