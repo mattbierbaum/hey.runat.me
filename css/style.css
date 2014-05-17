@@ -25,13 +25,13 @@ body {
 #header {
     z-index: 50;
     width:  100%;
-    background: rgb(228,228,228);
     margin: 0px;
-    box-shadow: 0 0 4px rgb(80, 80, 80) inset;
+    box-shadow: 0 0 6px rgb(0,0,0) inset;
     overflow: visible;
     position: fixed;
     top: 0px;
     height: 44px;
+    background-color: rgb(60,60,60);
 }
 
 .reverser {
@@ -63,8 +63,9 @@ body {
 .header_title {
     vertical-align: middle;
     line-height: 44px;
-    color: rgb(60,60,60);
+    color: white;
     font-size: 25px;
+    margin-left: 10px;
 }
 
 .header_title a {
@@ -100,7 +101,6 @@ body {
     text-decoration: none;
 
     color: rgb(240,240,240);
-    background: rgb(80, 80, 80);
     font-size: 15px;
     min-width: 120px;
     font-family: 'Open Sans', 'News Gothic', 'Helvetica';
@@ -117,9 +117,9 @@ body {
     color: rgb(100,100,100);
     padding: 0px 0px 0px 9px;
     border-style: solid;
-    border-width: 0px 2px 0px 2px;
+    border-width: 0px 2px 2px 2px;
     border-color: rgb(60, 60, 60);
-    background-color: rgba(60,60,60,0.8);
+    background-color: rgba(60,60,60,0.85);
 
     opacity: 0;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
