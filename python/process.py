@@ -188,7 +188,7 @@ def process_site():
         info.update(doc)
         tcat[c].append(info)
 
-    header = [{'name': cat, 'href': ROOTFOLDER+'/'+cat, 'list': tcat[cat][:3]} for cat in cats]
+    header = [{'name': cat, 'href': ROOTFOLDER+'/'+cat, 'list': tcat[cat][:5]} for cat in cats]
     snaps = [{'name': cat, 'href': ROOTFOLDER+'/'+cat, 'list': tcat[cat]} for cat in cats]
 
     if os.path.exists(OUTFOLDER):

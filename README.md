@@ -1,4 +1,4 @@
-runat.me
+hey.runat.me
 ---------
 
 YABP (yet another blog platform) build by myself in a day

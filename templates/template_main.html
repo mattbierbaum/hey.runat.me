@@ -44,7 +44,7 @@
         <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
         <script src='/js/highlight.js'></script>
         <script>hljs.initHighlightingOnLoad();</script>
-        {% if title|length > 0 %}
+        {% if title %}
         <title>{{title}} | hey.runat.me</title>
         {% else %}
         <title>hey.runat.me</title>
@@ -58,7 +58,6 @@
     </div>
     <div id="header">
         <div class="logobox">
-            <!--<img src='/img/cupgame.png' width=80 height=80/>-->
             <div class="header_title">
                 {% for link in linklist %}
                     <a href='{{link.href}}'>{{link.name}}</a>
@@ -66,22 +65,25 @@
             </div>
         </div>
     
-        <div class='infoboxes'>
+        <div class='navbox' >
         {% for cat in header %}
-            <div class="g-1-5 infobox" >
-                <h1><a href='{{ cat.href }}'>{{ cat.name }}</a></h1>
-                <ul>
-                {% for item in cat.list %}
-                    <li><a href='{{ item.href }}'>{{item.name.lower()}}</a></li>
-                {% endfor %}
-                </ul>
-            </div> 
+            <ul class='nav'>
+                <li><a href='{{ cat.href }}'>{{ cat.name }}</a>
+                    <ul>
+                    {% for item in cat.list %}
+                        <li><a href='{{ item.href }}'>{{item.name.lower()}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul> 
         {% endfor %}
         </div>
     </div>
 
+    <div id="bodyblock">
     {% block body %}
     {% endblock %}
+    </div>
 
 </body>
 <script>

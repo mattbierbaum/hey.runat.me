@@ -1,3 +1,5 @@
+{{ figure('/img/snaps/peaks_bike.png', '', 512, 'center') }}
+
 I'm Matt Bierbaum, an Nth year [physics](http://www.physics.cornell.edu/)
 graduate student at [Cornell University](http://www.cornell.edu/).  I study a
 variety of different topics which you can find in the [science](/pages/science)
