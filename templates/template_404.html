@@ -1,8 +1,67 @@
 {% extends "./template_main.html" %}
 {% block body %}
 
-<div style='width: 100%'>
-<p style='font-size: 76; margin: auto; position: relative; width: 120px'>404</p>
+<script>
+    var canvas = null;
+    var ctx = null;
+    var buf = null;
+    var H, W, targetH, targetW;
+    var target = 100000;
+
+    window.onload = function() {
+        canvas = document.getElementById('draw');
+        H = document.getElementById('whole').offsetHeight;
+        W = document.getElementById('whole').offsetWidth;
+        canvas.width = W;
+        canvas.height = H;
+        ctx = canvas.getContext('2d');
+
+        initialize();
+        draw();
+    }
+
+    function initialize() {
+        ctx.font = "bold 16px Open Sans";
+        var smallsize = ctx.measureText("404");
+        var rat = (16/(1.5)) / smallsize.width;
+
+        var fontsize = Math.min(0.95*H*1.5, 0.95*rat*W);
+        ctx.fillStyle = "black";
+        ctx.font = "bold "+fontsize+"px Open Sans";
+        var size = ctx.measureText("404");
+        var x = W/2 - size.width/2;
+        var y = H/2 + fontsize/(1.5*2);
+        ctx.fillText("404", x, y);
+        buf = ctx.getImageData(0, 0, W, H);
+    }
+
+    function draw() {
+        update();
+        ctx.putImageData(buf, 0, 0);
+        registerAnimationRequest(draw);
+    }
+
+    function update(){
+        for (var i=0; i<target; i++){
+            var x = Math.random() * W | 0;
+            var y = Math.random() * H | 0;
+            var ind = (x + y*W)*4;
+            var val = 255*(Math.sin(x)*Math.cos(y) + Math.cos(i*y*y));
+            buf.data[ind+0] = val;
+            buf.data[ind+1] = val;
+            buf.data[ind+2] = val;
+        }
+    }
+
+    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+    window.registerAnimationRequest = window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||  window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) { window.setTimeout( callback, 32); };
+</script>
+
+<div id='whole' style='width: 100%; height: 100%;'>
+<canvas height=1 width=1 id='draw'></canvas>
 </div>
 
 {% endblock %}

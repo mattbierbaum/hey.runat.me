@@ -1,19 +1,18 @@
 {% extends "./template_main.html" %}
 {% block body %}
 
+<div id='snapbacker'>
 <div id="content">
     <div class='sg-container'>
         {% for item in snaps.list %}
         <div class="sg sg-l-400 bigbox">
-            <a href="{{ item.href }}">
-                <img src="/img/snaps/{{ item.snapshot }}"/>
-                <aside>
-                <span>{{ item.name }}</span>
-                </aside>
-            </a>
+        <a href="{{ item.href }}" style='text-decoration:none; color: white;'><span class="box-spanner"></span></a>
+            <img src="/img/snaps/{{ item.snapshot }}"/>
+            <a href="{{ item.href }}"><aside><span>{{ item.name }}</span></aside></a>
         </div>
         {% endfor %}
     </div>
+</div>
 </div>
 
 {% endblock %}
