@@ -58,13 +58,14 @@
     </div>
     <div id="header">
         <div class="logobox">
+            <a href='/'><img src='/img/chainring.png' width=36 height=36/></a>
             <div class="header_title">
                 {% for link in linklist %}
                     <a href='{{link.href}}'>{{link.name}}</a>
                 {% endfor %}
             </div>
         </div>
-    
+
         <div class='nav' >
         {% for cat in header %}
             <ul class='navul'>
