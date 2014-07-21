@@ -16,25 +16,28 @@ body {
     margin-top: 44px;
 }
 
+.catwrap {
+    background: rgb(50,50,50);
+}
+
 .catwrap a {
     text-decoration: none;
 }
 
 .category {
-    opacity: 0.9;
+    opacity: 0.6;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
     color: rgb(240, 240, 240);
-    background: rgb(50,50,50);
     margin-left: 12px;
     font-size: 36px;
 }
 
 .category:hover {
-    opacity: 0.4;
+    opacity: 0.9;
 }
 
 #header {
