@@ -13,20 +13,19 @@
 </script>
 
 <div id='snapbacker'>
-    <!--<img id='snapbackimg' src='/img/snaps/cupgame_zoom_512.png'/>-->
     <img id='snapbackimg' src='/img/chainring.png'/>
 </div>
 <div id="content">
-    <div id='snapback'>
     <div class='sg-container'>
         {% for item in snaps.list %}
-        <div class="sg sg-l-400 bigbox">
+        <div class="sg sg-l-400">
+        <div class='bigbox'>
         <a href="{{ item.href }}" style='text-decoration:none; color: white;'><span class="box-spanner"></span></a>
             <img class='snapimg' src="/img/snaps/{{ item.snapshot }}"/>
             <a href="{{ item.href }}"><aside><span>{{ item.name }}</span></aside></a>
         </div>
+        </div>
         {% endfor %}
-    </div>
     </div>
 </div>
 
