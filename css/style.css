@@ -19,6 +19,13 @@ body {
     text-decoration: none;
 }
 
+.catsnapback {
+    background: rgb(70,70,70);
+    -webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.40);
+    -moz-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.40);
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.40);
+}
+
 .category {
     opacity: 1.0;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -35,6 +42,13 @@ body {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     opacity: 0.6;
+}
+
+.catbigbox {
+    margin: 0px !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 #header {

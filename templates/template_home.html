@@ -4,15 +4,13 @@
 {% for cat in header %}
 <div id="cat-content">
     <div class='catwrap'><a href='{{cat.href}}'><div class='category'><span>{{cat.name}}</span></div></a></div>
-    <div class='sg-container' style='position: relative;'>
+    <div class='sg-container catsnapback' style='position: relative;'>
     {% for item in cat.list[:3] %}
-        <div class="sg onethird">
-        <div class="bigbox" style='margin: 0px;'>
+        <div class="sg onethird"> <div class="bigbox catbigbox">
         <a href="{{ item.href }}" style='text-decoration:none; color: white;'><span class="box-spanner"></span></a>
             <img src="/img/snaps/{{item.snapshot}}"/>
             <a href="{{ item.href }}"><aside><span>{{ item.name }}</span></aside></a>
-        </div>
-        </div>
+        </div> </div>
    {% endfor %}
     </div>
 </div>
