@@ -3,8 +3,8 @@
     height: 993px;
     margin-left: auto;
     margin-right: auto;
-    font: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    /*font: normal normal 24px "Trebuchet MS",Arial,Tahoma,Verdana,sans-serif;*/
+    /*font-family: 'Helvetica';*/
+    font-family: 'Source Sans Pro', 'Helvetica', sans-serif;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 12px;
