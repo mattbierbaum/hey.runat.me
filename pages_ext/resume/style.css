@@ -29,8 +29,8 @@
 }
 
 #qr {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     margin: auto;
     position: relative;
     display: block;
@@ -191,6 +191,10 @@
 }
 .col-8-8 {
     width: 100.0%;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .header {
