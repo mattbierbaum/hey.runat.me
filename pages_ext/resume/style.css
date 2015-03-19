@@ -93,6 +93,12 @@
     padding-left: 28px;
 }
 
+.lhang {
+    text-indent: -28px;
+    padding-left: 28px;
+    padding-bottom: 5px;
+}
+
 .right {
     text-align: right;
 }
@@ -216,9 +222,14 @@
     font-variant: small-caps;
 }
 
+@media all {
+    .page-break{ display: none; }
+}
+
 @media print {
     .sep, .top {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
+    .page-break{ display: block; page-break-before: always; }
 }
