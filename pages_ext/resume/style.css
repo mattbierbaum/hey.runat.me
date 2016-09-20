@@ -88,9 +88,29 @@
     line-height: 1.4em;
 }
 
+.spacer {
+    padding-bottom: 10px;
+}
+
+.whang {
+    text-indent: -28px;
+    padding-left: 28px;
+    padding-bottom: 10px;
+}
+
+.lhang {
+    text-indent: -28px;
+    padding-left: 28px;
+    padding-bottom: 5px;
+}
+
 .hang {
     text-indent: -28px;
     padding-left: 28px;
+}
+
+.dot {
+    list-style: disc;
 }
 
 .right {
@@ -220,5 +240,8 @@
     .sep, .top {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+    }
+    .pagebreak {
+        page-break-after: always;
     }
 }
