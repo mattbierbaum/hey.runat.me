@@ -1,0 +1,516 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="shortcut icon" href="/img/favicon-ring.ico?v=0">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                "HTML-CSS": { styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}},
+                    extensions: ["handle-floats.js"]},
+                tex2jax: {inlineMath: [['$','$'],['\\(','\\)']], processEscapes: true}, delayStartupUntil: "onload"
+            });
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+        </script>
+        <script>
+        function popup(elm){
+            document.getElementById("blanket").onclick = popdown;
+            // work-around for webkit issues with callbacks on change src
+            // see: https://code.google.com/p/chromium/issues/detail?id=7731
+            document.getElementById("popup_img").src = "";
+            document.getElementById("popup_img").onclick = popdown;
+            document.getElementById("popup_img").onload = function(){
+                var img = document.getElementById("popup_img");
+                var pop = document.getElementById("popup");
+
+                document.getElementById("blanket").style.display = 'block';
+                pop.style.width = img.width;
+                pop.style.height = img.height;
+                pop.style.maxWidth = '100%';
+                img.style.maxWidth = '100%';
+            }
+            document.getElementById("popup_img").src = elm.children[0].src;
+        }
+
+        function popdown(){
+            document.getElementById("blanket").style.display = 'none';
+        }
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel='stylesheet' type='text/css' href='/css/normalize.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/style.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
+        <script src='/js/highlight.js'></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <title>Complex dynamics of beer pong | hey.runat.me</title>
+        
+    </head>
+<body>
+    <div id="blanket">
+        <div id="popup">
+            <img id="popup_img" src="/img/chainring.png">
+        </div>
+    </div>
+    <div id="header">
+        <div class="logobox">
+            <a href='/'><img src='/img/chainring.png' width=36 height=36/></a>
+            <div class="header_title">
+                
+                    <a href='/'>/hey.runat.me/</a>
+                
+                    <a href='/pages/science'>science/</a>
+                
+                    <a href='/pages/science/beer_pong.html'>beer_pong</a>
+                
+            </div>
+        </div>
+
+        <div class='nav' >
+        
+            <ul class='navul'>
+                <li><a href='/pages/science'>science</a>
+                    <ul>
+                    
+                        <li><a href='/pages/science/moshpits_project.html'>moshpits project</a></li>
+                    
+                        <li><a href='/pages/science/beer_pong.html'>beer pong</a></li>
+                    
+                        <li><a href='/pages/science/smectics.html'>smectics</a></li>
+                    
+                        <li><a href='/pages/science/colloids.html'>colloids</a></li>
+                    
+                        <li><a href='/pages/science/bubbles.html'>bubbles</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/programming'>programming</a>
+                    <ul>
+                    
+                        <li><a href='/pages/programming/zombietown_usa.html'>zombietown usa</a></li>
+                    
+                        <li><a href='/pages/programming/isingjs.html'>ising.js</a></li>
+                    
+                        <li><a href='/pages/programming/onelook.html'>onelook</a></li>
+                    
+                        <li><a href='/pages/programming/openkim_pipline.html'>openkim pipline</a></li>
+                    
+                        <li><a href='/pages/programming/yorunatme.html'>yo.runat.me</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/media'>media</a>
+                    <ul>
+                    
+                        <li><a href='/pages/media/the_prank.html'>the prank</a></li>
+                    
+                        <li><a href='/pages/media/training_video.html'>training video</a></li>
+                    
+                        <li><a href='/pages/media/its_morning.html'>it's morning.</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_2.html'>csaba csalk 2</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_1.html'>csaba csalk 1</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/about'>about</a>
+                    <ul>
+                    
+                        <li><a href='/pages/about/about_me.html'>about me</a></li>
+                    
+                        <li><a href='/pages/about/resume.html'>resume</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+        </div>
+    </div>
+
+    
+<div class='article'>
+    <!--<br style="clear: both;" /> -->
+    <br/>
+    
+        <div class='article-title'>Complex dynamics of beer pong</div>
+    
+    
+        <div class='article-meta'>By Matt Bierbaum</div>
+    
+    
+        <div class='article-lead'>Fractals, singularities, and drinking</div>
+    
+
+    <p>We all know that the game of beer pong is relatively simple in terms of
+physics.  What this post presupposes is: maybe it isn't?</p>
+<p>Before I even begin, I'd like to say that if you are looking for pretty
+pictures and advice, skip to <a href='#optimal'>Optimal aiming</a>
+or <a href='#fractals'>Beerpong fractals</a>.  Otherwise, enjoy.</p>
+<p><figure class='right' style='width: 362px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/beerpong/fractalpreview.png'></a>
+    <figcaption>A fractal generated with beer pong dynamics.  Not so simple.</figcaption>
+</figure></p>
+<p>First, I feel like I have to explain what the game beer pong is.  And let me
+tell you, it is exactly what it sounds like - a small white ball bouncing
+between two paddles on an Atari while two gentlemen sip beverages.  Well, fine,
+it's dudes throwing balls into cups full of beer until their girlfriends leave
+for another party.</p>
+<p>Now, what are typical questions that one may ask when thinking, "hmmm, I'm
+bored and want to know about the physics of beer pong"?  They may include:</p>
+<ol>
+<li>What is the precise trajectory I need to make it in a cup?</li>
+<li>Where should I aim, given my ability level?</li>
+<li>If I shot randomly at the cups what is the chance that I make it in? </li>
+</ol>
+<!--If you are asking
+yourself that question, there are likely other things in your life you should
+question. Nonetheless, you may arrive at these:
+
+1. What is the precise trajectory I need to make it in a cup?
+2. How accurate do I need to be to get the ball in the cup?  Something about angular errors?
+3. If I shot randomly at the cups what is the chance that I make it in? 
+
+I have answers for these:
+
+1. Easy, and useless.  You can't duplicate this with your hand. Give up. 
+   Practice is better for this calculation.
+2. Perform step 1, rinse and repeat.
+3. A bit more subtle, but a good idea of its resolution comes from step 2, rinse, and repeat.
+-->
+
+<p>I will sort of touch on these issues, but only through a completely different
+question - what happens when we don't quite make it?  What happens when the
+ball bounces off the rim?  Now there's something to make your socks go up and
+down.</p>
+<h2>Creating trajectories</h2>
+<p>Okay, so everyone who has encountered physics knows that we can describe a ball
+flying through air with a quadratic equation (except maybe Michael 'Air'
+Jordan who simply has no regard for gravity).  It looks something like this:</p>
+<p><mathjax>$$ y(t) = y_0 + v_{0,y}t - \frac{1}{2}g t^2 $$</mathjax>
+<mathjax>$$ x(t) = x_0 + v_{0,x}t $$</mathjax>
+<mathjax>$$ z(t) = z_0 + v_{0,z}t $$</mathjax></p>
+<p>where y is up, gravity is down and <strong>there is no air resistance</strong>.  I feel like
+I have to bring up this point unncessarily early.  I do physics, not real
+things.  Air resistance would make this real. Real hard.  So it's gone, like 
+my hopes of growing up to be an astronaut. So, when you throw a ball, you can
+determine at any time where it is, where it's going and which dreams it's left
+behind along the way.  This is going to be useful to us later, so don't forget
+it.</p>
+<p>Alright, so I guess we need to make some cups and balls and and then throw them
+at one another.  Let's do it.</p>
+<p>A cup rim is a torus.  A ball is a sphere. Bill Murray is my hero.  These are
+just facts.  What is a little more contentious is that for the rest of this
+post, I want to simplify the interaction of the cup rim and ball to a single
+torus, leaving the ball to be an infinitessimal speck.  Imagine attaching one
+of those awesome spherical neodymium magnets to a metal hoop and swinging it
+around until the ball rolls over the entire surface.  The center of that sphere
+would trace out the surface of a torus.  I hope that's convincing since I'm not
+going to try again.  I tried to make a picture but it didn't turn out great.</p>
+<p><figure class='left' style='width: 400px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/beerpong/cup-rim-torus.png'></a>
+    <figcaption>Believe it or not, this a drawing of a sphere rolling on a ring creating a torus.  I honestly don't know how <a href='http://hyperboleandahalf.blogspot.com/'>Allie Brosh</a> does it.  Must be one of those sketch pads or whatever. (Edit: <a href='http://www.reddit.com/r/IAmA/comments/1ozt33/i_am_allie_brosh_the_drawwriter_of_hyperbole_and/ccxbwra'>AMA</a> says she has a tablet, I feel less inadequate now)</figcaption>
+</figure></p>
+<p>Finding collisions between this infinitessimal ball and ball-rim torus amounts
+to finding the intersection of the equation of torus and that of a parabola.
+This is because we ignored air resistance; if we didn't, it would be some other
+minimization algorithm which wouldn't be too terrible, but probably not fun
+either.  In terms of polynomials, a torus can be written</p>
+<p><mathjax>$$ (x_n^2 + y_n^2 + z_n^2 + R^2 - r^2)^2 = 4R^2(x_n^2 + y_n^2) $$</mathjax></p>
+<p>where <mathjax>$x_n$</mathjax>, <mathjax>$y_n$</mathjax>, <mathjax>$z_n$</mathjax> are normalized coordinates, <mathjax>$x_n = x(t) - x_c$</mathjax> where
+<mathjax>$x_c$</mathjax> is the center of the rim.  And all the rest are normalized too.  We
+can then plug our previous equations, setting <mathjax>$x = x(t)$</mathjax> where <mathjax>$x(t)$</mathjax> is the
+coordinate from earlier, and get an 8th order polynomial in time.  You can
+convince yourself it's 8th order just by starring at the equation or realizing
+how many times a cricket wicket could intersect a jelly doughnut.  Well,
+actually, just a regular doughnut since we need the 
+<a href='http://en.wikipedia.org/wiki/Doughnut#Holes'>hole</a> gone.</p>
+<p>Okay, now that we know every time (literally, the variable is <mathjax>$t$</mathjax>) the ball
+intersects the rim, we have to figure out what happens when it bounces off.
+It's just like bouncing on a table, except that table is a torus and so only
+flat in a small region.  So, we find the normal of the rim at the collision
+point, and reflect the ball about this normal.  Easy, breezy, toroidal
+cover girl.</p>
+<p>For a quick recap (for science and reproducability and all that...):</p>
+<ol>
+<li>Give initial trajectory to a single infinitessimal ball</li>
+<li>Find all 8N possible collisions with a torus (technical: 
+    <a href="http://en.wikipedia.org/wiki/Bairstow's_method">Bairstow's method</a>)
+    , where N is the total number of cups that it could possibly collide with</li>
+<li>Determine the closest collision in time, throwing away those in the past</li>
+<li>Move to that collision point</li>
+<li>Determine the normal vector on that part of the torus and reflect the
+    current velocity.</li>
+<li>Start again, and continue until the next collision time never occurs
+    or it occurs after the ball crosses the zero plane.</li>
+</ol>
+<p>Finally, we can start to look at some pictures a.k.a. was that a bunch of
+nonsense or is there a reason that this post goes on for 3 more pages. Let's
+drop ten thousand ping pong balls from straight above a single cup rim and look
+at the surface of interaction where they touch.  It looks like this:</p>
+<p><figure class='center' style='width: 700px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/rim_surface.png' class='multipanel figsize-48 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/rim_surface_lots.png' class='multipanel figsize-48 '></a>
+    
+    <figcaption>(A) Looks like a torus - things are going well so far.  (B) An infinite       array of cups.</figcaption>
+</figure></p>
+<p>The second picture is for an infinite array of cups, which we will be looking
+at in the fractals and scattering sections.  Looks like we're doing okay so
+far.  Okay, okay.  It's actually a little more subtle  - there are a lot of
+parameters that we need to start thinking about.  Next we'll describe them and
+look at various configurations of these torii.</p>
+<h2>Physical setup</h2>
+<p>Now I'm going to put on my 'physics in the real world hat' and put some numbers
+behind all these letters.  Our variables are: <mathjax>$R$</mathjax> is the radius of the cup, <mathjax>$r$</mathjax>
+is the radius of the ball-rim, <mathjax>$h$</mathjax> the height of the drop, <mathjax>$\eta$</mathjax> fractional
+restitution coefficient (<mathjax>$v_{n+1} / v_n$</mathjax> between bounces), and... I think
+that's it. Except <mathjax>$x_0$</mathjax> and <mathjax>$v_0$</mathjax>. And <mathjax>$\epsilon$</mathjax>, the cutoff resolution of
+root finding.  Oh, and <mathjax>$g$</mathjax>, the gravitational constant. I was close.</p>
+<p>To simplify our numbers, I will be presenting non-dimensional forms of these
+variables, normalized by the inter-cup spacing <mathjax>$D$</mathjax>, from center to center. On a
+serious note this is a very important technique in physics and can give you
+great insight into the importance of different physical processes in a
+situation.  However, the choice of this normalization may not have been the
+best as it is used mainly for historical reasons, for which you can blame the
+author.  Using a standard solo cup, we find that</p>
+<p><mathjax>$$ R/D \approx 0.95, \,\,\, r/D \approx 0.30, \,\,\, \eta \approx 0.3, 
+  \,\,\, \frac{g D} {|v_0|^2} \approx 1, \,\,\, \epsilon \approx 10^{-15} $$</mathjax></p>
+<p>Let's start again with a quarter million balls dropped directly overhead a cup
+from a height <mathjax>$h \approx 6\,\rm{ft}$</mathjax>, <mathjax>$h/D \approx 20$</mathjax> and color the pixel of
+where it started according to how many times the ball bounced before it went
+into a cup (darker is fewer).  And let's start with the infinite array of cups
+for curiosity's sake.  When we do this, we see a very cool pattern.  Of course
+we can see the center of the cup where there are no collisions.  The hexagonal
+symmetry also appears, as well as 'images' of the other cups on the rim
+of the center cup.</p>
+<p><figure class='center' style='width: 700px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cupgame_realistic_100.png' class='multipanel figsize-48 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cupgame_realistic_6cup.png' class='multipanel figsize-48 '></a>
+    
+    <figcaption>Simulations of beerpong using the parameters listed.  (A) Note the large hole in the center where there are no collisions - the ball goes directly in the cup.  Since it is an infinite lattice of cups, you can see the 'images' of the other cups on the first cup of collision. (B) A game of only 6 cups, coloring only the areas that eventually land in a cup.</figcaption>
+</figure></p>
+<p>But, who actually has an infinite number of solo cups laying around?  Let's go
+for the physically reasonable 6 cups and color only the throws that actually
+end up in a cup by the time they're done bouncing.  We still see the requisite
+symmetry and we can start to see where some of the bounces map.  On the back
+row, the darker colors represent nearest neighbor bounces while the lighter
+color is a double bounce from second nearest neighbor to another another cup.</p>
+<p><span id='optimal'></span></p>
+<h2>Optimal aiming</h2>
+<p>Until now, we've been investigating how to properly simulate beerpong
+and getting a feel for the parameter space.  Let's answer some so-called 
+'real' questions now.  For example, where should you aim?</p>
+<p>To answer this question, we'll tilt our previous 6 cup simulation so that
+the launch position is at eye level from 6 ft. away.  From there, let's
+make our usual bounce count picture, but now in <mathjax>$\theta-\phi$</mathjax> space,
+the angles associated with the throw.  Doing so, we can see the bias
+between front and back of the formation, with the effect of the back
+row being a backboard ('KOBE!').</p>
+<p><figure class='center' style='width: 350px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/beerpong/cupgame_realistic_6cup_tilted.png'></a>
+    <figcaption>The number of bounces before entering a cup as seem from 6 ft.    away with the physical parameters shown earlier</figcaption>
+</figure></p>
+<p>But of course, people can't aim perfectly (except Michael 'Laser Fingers'
+Jordan who doesn't know the meaning of uncertainty) so let's start to blur our
+eyes.  We blur the pattern of shots that land in a cup by various levels of
+gaussian kernels.  The size of the variance approximately models various levels
+of aiming ability.  Looking at these various errors levels in fractions of the
+cup size, we see</p>
+<ul>
+<li>10% - you're pretty talented.  Have too much free time?  In either case,
+   just aim for the center of the cup, you can do it, I believe in you.</li>
+<li>33% - aiming towards the center of the center back cup actually
+   starts to help.</li>
+<li>50% - you're teammates, friends, associates, and puppy will like you
+   better if you aim for that back center cup.  That is of course
+   ignoring the fact that this is bad overall strategy, but that's not
+   the question we are addressing. </li>
+<li>100% - you can't hit a cup. You should just aim for the center
+   of the entire setup.  It works out better for you that way.</li>
+</ul>
+<p><figure class='center' style='width: 800px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/prediction-0_1.png' class='multipanel figsize-23 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/prediction-0_3.png' class='multipanel figsize-23 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/prediction-0_45.png' class='multipanel figsize-23 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/prediction-0_9.png' class='multipanel figsize-23 '></a>
+    
+    <figcaption>The likehood of making a shot into any of the cups given a certain level    of user error.  From left to right is increasing error in fraction of cup size     (A) 10% (B) 33% (C) 50% (D) 100%.  At typical user ability (D), we can see that     aiming for the center of the entire game works out better.  At novice levels,     the backboard effect of the last cups means you should aim more towards the back    center cup.  Finally, at expert levels, do as you feel.</figcaption>
+</figure></p>
+<p><span id='fractals'></span></p>
+<h2>Beerpong fractals</h2>
+<p>Alright, that was way too applicable, we gotta bring it back. So, finally, as I
+promised, let's investigate those weird cup images that we saw in the infinite
+lattice pictures.  Let's back up from the realm of physically viable
+parameters.  I'm talking thin cups that have some infinitessimal separation
+between them and a ball so bouncy that it could be marketed as magic. Our
+parameters are</p>
+<p><mathjax>$$ R/D = 0.7, \,\,\, r/D = 0.30, \,\,\, \eta = 0.9 $$</mathjax></p>
+<p>Let's drop balls from directly overhead from a significantly lower height (for
+numerical accuracy reasons).  On the edges we see where the ball can just
+barely fit between the cups while bouncing around violently.  I'll call these
+elbows.  Why? I'm not really sure.  But soon, we will see elbows all the way
+down.  Let's choose an interesting area and zoom way, way in.  I mean, given
+the scale of the cup, let's go atomic scale, <mathjax>$1\, \overset{\circ}{\rm{A}}$</mathjax>.  We
+can see that the elbow features occur everywhere.  In fact, many different
+features occur until the very smallest scales - a fractal. </p>
+<p><figure class='center' style='width: 350px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/beerpong/cupgame_fullcup.png'></a>
+    <figcaption>A more unrealistic beer pong simulation.  That's what I'm talking about.</figcaption>
+</figure></p>
+<p>Below is a little javascript program that allows you to zoom through the many
+levels of the beerpong fractal.  After you click load and allow the images to
+buffer, use the slider to zoom from cup scale to atomic scale and in between.</p>
+<iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" height=572 width=515 seamless src='/pages_ext/cupgame_zoom.html' style='display: table; margin:auto'></iframe>
+
+<p>If we vary the height of the starting position, we can look at the folding and
+evolution of these self similar structures.  Another slider program for this is
+below:</p>
+<iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" height=572 width=515 seamless src='/pages_ext/cupgame_energy.html' style='display: table; margin:auto'></iframe>
+
+<p>It is also (arguably) interesting to look at different slices of these same
+pictures.  Let's plot a single <mathjax>$45^{\circ}$</mathjax> line from the center of a cup to
+the outer edge along the horizontal axis.  In the vertical direction, we can
+vary the value of the restoration factor, <mathjax>$\eta$</mathjax>.  I changed the colormap,
+but we can still see the elbows that occur and how they appear and spread
+apart as the restoration coefficient increases. </p>
+<p><figure class='center' style='width: 512px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/beerpong/cupgame_vs_restore.png'></a>
+    <figcaption>Bounce density    varied by restoration value, increasing as you move down in the    figure.  The same fold features appear in this slice as well.</figcaption>
+</figure></p>
+<p>These fractal structures that are shown in the above are really another way of
+representing an attribute of chaos: sensitivity in initial conditions.  That is
+to say, even the smallest perturbation in a particle's initial trajectory will
+cause it to quickly diverge away from very similar trajectories.  In the
+beerpong system, we can investigate this property by looking at top down views
+of pong ball paths.  Every kink in the trajectory is a collision with a cup
+causing it to change directions.  We can see that even after just a few
+collisions, very similar trajectories have moved to entirely different cups.</p>
+<p><figure class='center' style='width: 750px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cups_IC_v0.png' class='multipanel figsize-31 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cups_IC_v2.png' class='multipanel figsize-31 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cups_IC_v4.png' class='multipanel figsize-31 bordered'></a>
+    
+    <figcaption>Trajectories showing sensitivity on initial conditions.  Three different     examples of very quickly diverging trajectories.</figcaption>
+</figure></p>
+<p>If we sample enough of these paths, you might start to believe that any
+starting point could potentially reach any other point if you varied the
+position just right.  If you manage to choose your point of interest in one of
+the boundary regions, it turns out you can do just that.  More about that just
+below.</p>
+<p><figure class='center' style='width: 700px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cups_chaos_far.png' class='multipanel figsize-48 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cups_chaos_near.png' class='multipanel figsize-48 bordered'></a>
+    
+    <figcaption>Density of trajectories that start within <mathjax>$10^{-4}$</mathjax> of each other on the     blue dot.  The first collision barely changes their paths which is then     amplified on the next bounce leading eventually to exponentially diverging     trajectories.  On the left, every cup that a path touches is drawn.</figcaption>
+</figure></p>
+<h2>Chaotic Scattering</h2>
+<p>It turns out that the dynamics of beerpong are actually quite closely related
+to a field in nonlinear dynamics and chaos called <a
+href='http://en.wikipedia.org/wiki/Chaotic_scattering'>chaotic scattering</a>.
+In these systems, it is common to label trajectories by where they 'exit' the
+system.  In beerpong, this means labeling the old pictures by the cup that the
+ball eventually ends up in.  Doing so, we again arrive at (less pretty)
+fractals, where we can see the ball going into the same cup on many different
+scales.  In fact by setting the restitution factor to 1, unlike the previous
+section, we actually see these structures until the point where we run into
+numerical issues due to floating point limitations.  To give you a sense of
+this scale, if the first scale were the size of the entire earth, the last is
+the size of a single atom.  We could go into 'long double' calculations for a
+few more bits or use multi-precision, but I don't think there's much to gain.</p>
+<p><figure class='center' style='width: 800px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wadathin_1.png' class='multipanel figsize-23 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wadathin_2.png' class='multipanel figsize-23 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wadathin_3.png' class='multipanel figsize-23 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wadathin_4.png' class='multipanel figsize-23 bordered'></a>
+    
+    <figcaption>Similar parameters as the zoom picture, but coloring the picture by    the cup that it ends in rather than the number of bounces.  We can see    the same 'elbow' structures, as well as empty spaces where the ball bounces    between cups.  Also, the same colors appear at every scale in the simulation    showing the sensitivity to initial conditions. Zooms of (A) <mathjax>$10^0$</mathjax> (B) <mathjax>$10^4$</mathjax>    (C) <mathjax>$10^8$</mathjax> (D) <mathjax>$10^{12}$</mathjax>.  In the highest zoom level, you can also see the    numerical difficulty resulting in static.  Oops</figcaption>
+</figure></p>
+<p>What's really cool is there is actually a chaotic scattering fractal that you
+can make and observe in your own home.  To do so, stack 4 reflective balls
+(such as Christmas ornaments) into a pyramid shape, and shine different colored
+lights through two of the openings and look in one of the other two.  Inside, you
+will see a real-space fractal!</p>
+<p>In fact, these are not just any type of fractal, they are 'Wada' fractals in 
+which the boundary between these attractors are fractal.  In the case of the
+shiny balls, each of the colors actually always touches each of the other
+colors?  I'm not sure that made sense.  You can read about it more on the
+<a href='http://en.wikipedia.org/wiki/Lakes_of_Wada'>wiki</a>.</p>
+<p>It appears that beerpong also shares these properties.  If we make sure that
+there is not way for the pong ball to escape without going into a cup, we can
+start to see these complicated fractal boundaries.  Again, these boundaries
+continue to show more sub-boundaries until our simulation breaks due to
+rounding errors.</p>
+<p><figure class='center' style='width: 750px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wada_big.png' class='multipanel figsize-31 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wada_med.png' class='multipanel figsize-31 bordered'></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/wada/wada_small.png' class='multipanel figsize-31 bordered'></a>
+    
+    <figcaption>Fractal boundaries between attractor basins.  (A) the full width    of the rim showing the large scale structure. (B) Zoomed in by a factor    of 10000, still showing the curvature of the boundary. (C) Another factor    of 10000, for <mathjax>$10^8$</mathjax> total.  The boundary appears the same as before, but    the curvature is gone due to the scale.  Fractal? I say yes.</figcaption>
+</figure></p>
+<h2>Sources and more</h2>
+<p>So, remember to shoot towards the center back if you're uncertain and that
+beerpong is pretty complicated once you don't swish / hole in one / touchdown /
+I'm bad at sports sayings.</p>
+<p>You can find the source code on my <a
+href='https://github.com/mattbierbaum/cupgame'>github</a>.  I also made giant
+pictures of these beerpong fractals in case you want to make a poster (any one
+of the pictures below).  They are also available for \$60 through email.  No,
+I'm not joking, I'll print one and mail it to you.  You're welcome.</p>
+<p><figure class='center' style='width: 750px; max-width: 100%'>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/unrealistic_6cup.png' class='multipanel figsize-31 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/fractalpreview.png' class='multipanel figsize-31 '></a>
+    
+    <a href='javascript:;' onclick='popup(this); return false;'><img src='/img/beerpong/cupgame_fullcup.png' class='multipanel figsize-31 '></a>
+    
+    <figcaption>Some simulation results available for printing.  Or really anything    by request</figcaption>
+</figure></p>
+<p>Also, I lied about the singularities (its more like non-analyticities but
+that's not here or there). </p>
+</div>
+
+
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38463781-5', 'runat.me');
+  ga('send', 'pageview');
+
+</script>
+</html>

@@ -1,0 +1,173 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="shortcut icon" href="/img/favicon-ring.ico?v=0">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                "HTML-CSS": { styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}},
+                    extensions: ["handle-floats.js"]},
+                tex2jax: {inlineMath: [['$','$'],['\\(','\\)']], processEscapes: true}, delayStartupUntil: "onload"
+            });
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+        </script>
+        <script>
+        function popup(elm){
+            document.getElementById("blanket").onclick = popdown;
+            // work-around for webkit issues with callbacks on change src
+            // see: https://code.google.com/p/chromium/issues/detail?id=7731
+            document.getElementById("popup_img").src = "";
+            document.getElementById("popup_img").onclick = popdown;
+            document.getElementById("popup_img").onload = function(){
+                var img = document.getElementById("popup_img");
+                var pop = document.getElementById("popup");
+
+                document.getElementById("blanket").style.display = 'block';
+                pop.style.width = img.width;
+                pop.style.height = img.height;
+                pop.style.maxWidth = '100%';
+                img.style.maxWidth = '100%';
+            }
+            document.getElementById("popup_img").src = elm.children[0].src;
+        }
+
+        function popdown(){
+            document.getElementById("blanket").style.display = 'none';
+        }
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel='stylesheet' type='text/css' href='/css/normalize.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/style.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
+        <script src='/js/highlight.js'></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <title>Csaba Csaki's Csalki Csalk Extra | hey.runat.me</title>
+        
+    </head>
+<body>
+    <div id="blanket">
+        <div id="popup">
+            <img id="popup_img" src="/img/chainring.png">
+        </div>
+    </div>
+    <div id="header">
+        <div class="logobox">
+            <a href='/'><img src='/img/chainring.png' width=36 height=36/></a>
+            <div class="header_title">
+                
+                    <a href='/'>/hey.runat.me/</a>
+                
+                    <a href='/pages/media'>media/</a>
+                
+                    <a href='/pages/media/csaba_csalk_2.html'>csaba_csalk_2</a>
+                
+            </div>
+        </div>
+
+        <div class='nav' >
+        
+            <ul class='navul'>
+                <li><a href='/pages/science'>science</a>
+                    <ul>
+                    
+                        <li><a href='/pages/science/moshpits_project.html'>moshpits project</a></li>
+                    
+                        <li><a href='/pages/science/beer_pong.html'>beer pong</a></li>
+                    
+                        <li><a href='/pages/science/smectics.html'>smectics</a></li>
+                    
+                        <li><a href='/pages/science/colloids.html'>colloids</a></li>
+                    
+                        <li><a href='/pages/science/bubbles.html'>bubbles</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/programming'>programming</a>
+                    <ul>
+                    
+                        <li><a href='/pages/programming/zombietown_usa.html'>zombietown usa</a></li>
+                    
+                        <li><a href='/pages/programming/isingjs.html'>ising.js</a></li>
+                    
+                        <li><a href='/pages/programming/onelook.html'>onelook</a></li>
+                    
+                        <li><a href='/pages/programming/openkim_pipline.html'>openkim pipline</a></li>
+                    
+                        <li><a href='/pages/programming/yorunatme.html'>yo.runat.me</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/media'>media</a>
+                    <ul>
+                    
+                        <li><a href='/pages/media/the_prank.html'>the prank</a></li>
+                    
+                        <li><a href='/pages/media/training_video.html'>training video</a></li>
+                    
+                        <li><a href='/pages/media/its_morning.html'>it's morning.</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_2.html'>csaba csalk 2</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_1.html'>csaba csalk 1</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/about'>about</a>
+                    <ul>
+                    
+                        <li><a href='/pages/about/about_me.html'>about me</a></li>
+                    
+                        <li><a href='/pages/about/resume.html'>resume</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+        </div>
+    </div>
+
+    
+<div class='article'>
+    <!--<br style="clear: both;" /> -->
+    <br/>
+    
+        <div class='article-title'>Csaba Csaki's Csalki Csalk Extra</div>
+    
+    
+        <div class='article-meta'>By Matt Bierbaum</div>
+    
+    
+        <div class='article-lead'>Another chalk advertisement for the physics christmas skit</div>
+    
+
+    <p>Ahhh, the sequel.  Production quality goes up a bit in this one.
+Note the color grading in the military scene (spoilers).</p>
+<iframe style='position: relative; display:block; margin:auto;' width="640" height="360" src="//www.youtube.com/embed/yl0xF74LGKY?rel=0?vq=720p" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38463781-5', 'runat.me');
+  ga('send', 'pageview');
+
+</script>
+</html>

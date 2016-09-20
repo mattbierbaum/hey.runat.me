@@ -1,0 +1,301 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="shortcut icon" href="/img/favicon-ring.ico?v=0">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                "HTML-CSS": { styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}},
+                    extensions: ["handle-floats.js"]},
+                tex2jax: {inlineMath: [['$','$'],['\\(','\\)']], processEscapes: true}, delayStartupUntil: "onload"
+            });
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+        </script>
+        <script>
+        function popup(elm){
+            document.getElementById("blanket").onclick = popdown;
+            // work-around for webkit issues with callbacks on change src
+            // see: https://code.google.com/p/chromium/issues/detail?id=7731
+            document.getElementById("popup_img").src = "";
+            document.getElementById("popup_img").onclick = popdown;
+            document.getElementById("popup_img").onload = function(){
+                var img = document.getElementById("popup_img");
+                var pop = document.getElementById("popup");
+
+                document.getElementById("blanket").style.display = 'block';
+                pop.style.width = img.width;
+                pop.style.height = img.height;
+                pop.style.maxWidth = '100%';
+                img.style.maxWidth = '100%';
+            }
+            document.getElementById("popup_img").src = elm.children[0].src;
+        }
+
+        function popdown(){
+            document.getElementById("blanket").style.display = 'none';
+        }
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel='stylesheet' type='text/css' href='/css/normalize.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/style.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/highlight.css'/>
+        <script src='/js/highlight.js'></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <title>Collective Motion of Mosh pits | hey.runat.me</title>
+        
+    </head>
+<body>
+    <div id="blanket">
+        <div id="popup">
+            <img id="popup_img" src="/img/chainring.png">
+        </div>
+    </div>
+    <div id="header">
+        <div class="logobox">
+            <a href='/'><img src='/img/chainring.png' width=36 height=36/></a>
+            <div class="header_title">
+                
+                    <a href='/'>/hey.runat.me/</a>
+                
+                    <a href='/pages/science'>science/</a>
+                
+                    <a href='/pages/science/moshpits_project.html'>moshpits_project</a>
+                
+            </div>
+        </div>
+
+        <div class='nav' >
+        
+            <ul class='navul'>
+                <li><a href='/pages/science'>science</a>
+                    <ul>
+                    
+                        <li><a href='/pages/science/moshpits_project.html'>moshpits project</a></li>
+                    
+                        <li><a href='/pages/science/beer_pong.html'>beer pong</a></li>
+                    
+                        <li><a href='/pages/science/smectics.html'>smectics</a></li>
+                    
+                        <li><a href='/pages/science/colloids.html'>colloids</a></li>
+                    
+                        <li><a href='/pages/science/bubbles.html'>bubbles</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/programming'>programming</a>
+                    <ul>
+                    
+                        <li><a href='/pages/programming/zombietown_usa.html'>zombietown usa</a></li>
+                    
+                        <li><a href='/pages/programming/isingjs.html'>ising.js</a></li>
+                    
+                        <li><a href='/pages/programming/onelook.html'>onelook</a></li>
+                    
+                        <li><a href='/pages/programming/openkim_pipline.html'>openkim pipline</a></li>
+                    
+                        <li><a href='/pages/programming/yorunatme.html'>yo.runat.me</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/media'>media</a>
+                    <ul>
+                    
+                        <li><a href='/pages/media/the_prank.html'>the prank</a></li>
+                    
+                        <li><a href='/pages/media/training_video.html'>training video</a></li>
+                    
+                        <li><a href='/pages/media/its_morning.html'>it's morning.</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_2.html'>csaba csalk 2</a></li>
+                    
+                        <li><a href='/pages/media/csaba_csalk_1.html'>csaba csalk 1</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+            <ul class='navul'>
+                <li><a href='/pages/about'>about</a>
+                    <ul>
+                    
+                        <li><a href='/pages/about/about_me.html'>about me</a></li>
+                    
+                        <li><a href='/pages/about/resume.html'>resume</a></li>
+                    
+                    </ul>
+                </li>
+            </ul> 
+        
+        </div>
+    </div>
+
+    
+<div class='article'>
+    <!--<br style="clear: both;" /> -->
+    <br/>
+    
+        <div class='article-title'>Collective Motion of Mosh pits</div>
+    
+    
+        <div class='article-meta'>By Matt Bierbaum</div>
+    
+    
+        <div class='article-lead'>A look into patterns formed in extreme dancing</div>
+    
+
+    <p>Curious collective behaviors are all around us from the atomic to the
+astronomical scale.  For example, how do defects in crystals
+(<a href='/pages/science/plasticity_project.html'>Plasticity project</a>) organize themselves into sharp,
+wall-like structures when left to their own devices?  How galaxies form the
+neat spiral shapes (<a href='http://en.wikipedia.org/wiki/Spiral_galaxy'>Spiral
+galaxy</a>) appears to be an open question still (says the wiki). On smaller
+scales, flocks of birds create very cool patterns such as those found in
+starlings (movie below).  How do they decide which direction to fly?  How is
+information transmitted from bird to bird?</p>
+<iframe style='display: block; margin: auto; position: relative;' width="480"
+height="360" src="//www.youtube.com/embed/iRNqhi2ka9k?vq=hd720&start=61"
+frameborder="0" allowfullscreen></iframe>
+
+<p>On the human scale, how do marching bands work?  What is the nature of the
+intricate patterns that a marching band makes as they perform a halftime show?
+Are they only moving relative to one another and memorized separation vectors,
+or have they memorized specific positions on the field and when to move between
+them?  Is there a set of measurements that you could perform to determine which
+of these methods or combination of methods they use?  I presume that these
+positions are determined prior to the performance (otherwise super kudos to
+them), meaning that there could be no interactions between the performers and
+they could still make these impressive patterns.  What would halftime look like
+if they had no prior knowledge and were simply told to make the shape of a
+pterodactyl?  I bet that would not go over very well.</p>
+<p>It turns out that beautiful collective motions also occur in a very different
+scenario: in the crowds at heavy metal concerts.  When these energetic crowds
+get together, a whole zoo of collective motions can be seen, including:</p>
+<ul>
+<li><em>Mosh pits</em> - members of the crowd run around bumping into each other
+   chaotically</li>
+<li><em>Cirlce pits</em> - a portion of the crowd runs in a circle</li>
+<li><em>Fist pumping</em> - throwing fists in the air to the beat / influenced by
+   people around you</li>
+<li><em>Synchronized jumping</em> - jumping to the beat, with local coupling and global
+   forcing</li>
+<li><em>Wall of death</em> - the crowd separates into two halves which then run at each
+   other Braveheart style</li>
+<li><em>Meat grinder</em> - N concentric circle pits, each moving in the opposite
+   direction (very rare)</li>
+</ul>
+<p>Many of these collective behaviors are highlighted in this compilation video,
+which I highly encourage you to watch.</p>
+<iframe style='display: block; margin: auto; position: relative;' width="640"
+height="360" src="//www.youtube.com/embed/R2cz8EeIBrQ?vq=hd720"
+frameborder="0" allowfullscreen></iframe>
+
+<h2>The model</h2>
+<p>Of these behaviors, <a
+href='http://scholar.google.com/citations?user=sdGV09AAAAAJ&hl=en'>Jesse
+Silverberg</a> and I thought that the mosh pit, circle pit, and the
+relationship between them seemed like an interesting and tractable problem.
+Since 1987, starting with Craig Reynolds, a type of model called a flocking
+model has been successfully used to describe many collective motions in various
+systems including birds, bison, and humans.  Given this success, we adapted the
+flocking model to the situation of extreme collective behaviors at heavy metal
+concerts, attempting to describe the mosh pit and circle pit.  After some
+reasonsing, reading, and testing we discovered that there are 4 aspects that
+are important to replicating the behaviors we were after. They are</p>
+<ol>
+<li>People are solid bodies, they should not pass through one another</li>
+<li>At the events, people are self-propelled - they run around</li>
+<li>Individuals don't have perfect information about their surroundings or
+    control of themselves</li>
+<li>A notion from the flocking science community that individuals like to move
+    in the direction of the people around them</li>
+</ol>
+<p>For these four aspects, we wrote down a model with four forces on each individual, 
+in the same order that they are listed above.  During a simulation, we calculate
+the total force on each individual <mathjax>$i$</mathjax> using the forces below and then integrate
+these forces to see how the crowd as a whole behaves.</p>
+<p><mathjax>$$ \vec{F}_{i}^{\rm repulsion} = \epsilon \left(1-\frac{r_{ij}}{2r_0}\right)^{5/2} \hat{r}_{ij} $$</mathjax>
+<mathjax>$$ \vec{F}_{i}^{\rm propulsion} = \beta (v_0 - v_i) \hat{v}_i $$</mathjax>
+<mathjax>$$ \vec{F}_{i}^{\rm noise} = \vec{\eta}_i $$</mathjax>
+<mathjax>$$ \vec{F}_{i}^{\rm flocking} = \alpha \sum_{j=0}^{N_i} \vec{v}_j \Big/ \left|\sum_{j=0}^{N_i} \vec{v}_j \right| $$</mathjax></p>
+<p>These forces are not novel, each as has been used in many situations before.
+However, if we split the parameters for these particles into two groups, we
+find that the behaviors that are accessible are quite surprising.  In
+particular, we can make two groups called active and passive moshers which are
+distinguished by <mathjax>$\alpha$</mathjax> and <mathjax>$\beta$</mathjax>.  Active moshers flock and run around
+(<mathjax>$\alpha \ne 0$</mathjax> and <mathjax>$\beta \ne 0$</mathjax>) whereas passive ones don't (<mathjax>$\alpha = \beta
+= 0$</mathjax>).</p>
+<p>To mimic a concert, we first began with a circle of active moshers surrounded by
+a crowd of passive ones (what you often see at a concert).  Doing this and tuning
+the parameters, we find that we can produce both a mosh pit and circle from the
+same model.  When the flocking strength is low, mosh pits form.  As this strength is
+increased, circle pits begin to form instead.  These two behaviors can be seen
+in the videos below:</p>
+<iframe style='display: block; margin: auto; position: relative;' width="360"
+height="360" src="//www.youtube.com/embed/9SVcLg4Oyoc"
+frameborder="0" allowfullscreen></iframe>
+
+<iframe style='display: block; margin: auto; position: relative;' width="360"
+height="360" src="//www.youtube.com/embed/-58HBzM9w00"
+frameborder="0" allowfullscreen></iframe>
+
+<p>You can explore the various behaviors of these equations of motion by visiting
+our interactive simulation built for the web at:</p>
+<p><br style='clear: both;' />
+<a style='line-height: 30px; font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='http://mattbierbaum.github.io/moshpits.js/'>Moshpits.js</a>
+<br style='clear: both;' /></p>
+<p>If you thought that the initial conditions of starting off in a circle were a
+bit contrived, then you'd be right.  We did too.  But, it turned out that
+started with the populations mixed led to a spontaneous self-segregation! After 
+the circle formed, then a mosh pit or circle pit would form anyway.  This hints
+that these dynamical structures are actually stable, which was supported by
+the fact that even extremely large pits did not dissolve after a very long time.
+Below is the largest circle pit we simulated (~100k participants).  The red particles
+are active moshers while the black are passive.  The black particles are shaded gray 
+according the force that they feel, thus labeling grain boundaries in the crowd.</p>
+<iframe style='display: block; margin: auto; position: relative;' width="480"
+height="480" src="//www.youtube.com/embed/YLggpXiFJWg?vq=hd720"
+frameborder="0" allowfullscreen></iframe>
+
+<iframe style='display: block; margin: auto; position: relative;' width="480"
+height="480" src="//www.youtube.com/embed/h46wpNX0N1E?vq=hd720"
+frameborder="0" allowfullscreen></iframe>
+
+<p>In the second movie, you can watch the segregation take place in a system of
+100k participants.  It's a rather long movie so feel free to fast forward and
+look at several different states.</p>
+<!--<figure class='right' style='width: 420px;'>
+    <a href='javascript:;' onclick='popup(this); return false;'> <img src='/img/moshpits/phase_diagram.png'></a>
+    <figcaption>The phase diagram of mosh pits and circle pits.  As the noise increases, there is a sweet spot where circle pits naturally exist.  The borders of this phase diagram can be understood by comparing time scales in the equations of motion.</figcaption>
+</figure>-->
+
+<p>For more information, you can visit the Cohen lab's page on moshpits:</p>
+<p><br style='clear: both;' />
+<a style='line-height: 30px; font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='http://cohengroup.lassp.cornell.edu/research.php?project=10017'>Cohen Group Page</a></p>
+<p>Or read the original paper on the ArXiv:</p>
+<p><br style='clear: both;' />
+<a style='line-height: 30px; font-weight: bold; text-decoration: none; font-size: 36px; display: table; margin:auto;' href='http://arxiv.org/abs/1302.1886'>ArXiv paper</a></p>
+</div>
+
+
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38463781-5', 'runat.me');
+  ga('send', 'pageview');
+
+</script>
+</html>
